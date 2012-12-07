@@ -1,0 +1,52 @@
+{
+    "name": "productupdate",
+    "description": "Please provide a description for this template.",
+    "version": "1.0",
+    "devices": [
+        "iPhone",
+        "Android"
+    ],
+    "platformConfig": {
+        "android": {
+            "nativeNavigation": true
+        },
+        "iOS": {
+            "nativeNavigation": true
+        }
+    },
+    "views": [
+        {
+            "navigationTitle": "Product Update View",
+            "navigationIcon": "images/icons/productupdateview.png",
+            "uri": "./html/productupdateview.html",
+            "locales": "./txt/locales/en.txt",
+            "markup": "./txt/markup/productupdateview.txt",
+            "data": [
+              {
+                "name": "acupdate",
+                "contentFeed": "50a7d4fb8a3fd24542093b92",
+                "type": "feed",
+                "items": {
+                    "title":     { "type": "string" },
+                    "description":    { "type": "string" },
+                    "pubDate":       { "type": "string" },
+                    "guid":       { "type": "string" }
+                }
+              },
+              {
+                "name": "acrecent",
+                "contentFeed": "50a7d46fec8e603cf0097a51",
+                "type": "feed",
+                "items": {
+                    "title":     { "type": "string" },
+                    "link":       { "type": "string" },
+                    "description":    { "type": "string" },
+                    "category":       { "type": "string" },
+                    "pubDate":       { "type": "string" },
+                    "guid":       { "type": "string" }
+                }
+              }
+            ]
+        }
+    ]
+}
