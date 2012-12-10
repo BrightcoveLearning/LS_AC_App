@@ -15,7 +15,6 @@
     bc.core.getData("acupdate", onGetUpdateDataSuccess, onGetDataError);
 
     registerEventListeners();
-
   }
 
   function registerEventListeners() {
