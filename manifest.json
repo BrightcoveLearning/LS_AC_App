@@ -1,6 +1,6 @@
 {
-    "name": "productupdate",
-    "description": "Please provide a description for this template.",
+    "name": "bclapp",
+    "description": "Brightcove Learning App",
     "version": "1.0",
     "devices": [
         "iPhone",
@@ -16,11 +16,11 @@
     },
     "views": [
         {
-            "navigationTitle": "Product Update View",
-            "navigationIcon": "images/icons/productupdateview.png",
-            "uri": "./html/productupdateview.html",
+            "navigationTitle": "App Cloud Page",
+            "navigationIcon": "images/icons/appcloud.png",
+            "uri": "appcloud.html",
             "locales": "./txt/locales/en.txt",
-            "markup": "./txt/markup/productupdateview.txt",
+            "markup": "./txt/markup/appcloud.txt",
             "data": [
               {
                 "name": "acupdate",
@@ -36,6 +36,39 @@
               {
                 "name": "acrecent",
                 "contentFeed": "50a7d46fec8e603cf0097a51",
+                "type": "feed",
+                "items": {
+                    "title":     { "type": "string" },
+                    "link":       { "type": "string" },
+                    "description":    { "type": "string" },
+                    "category":       { "type": "string" },
+                    "pubDate":       { "type": "string" },
+                    "guid":       { "type": "string" }
+                }
+              }
+            ]
+        },
+        {
+            "navigationTitle": "Video Cloud Page",
+            "navigationIcon": "images/icons/videocloud.png",
+            "uri": "videocloud.html",
+            "locales": "./txt/locales/en.txt",
+            "markup": "./txt/markup/videocloud.txt",
+            "data": [
+              {
+                "name": "vcupdate",
+                "contentFeed": "50a7d6623f62d53af50095ab",
+                "type": "feed",
+                "items": {
+                    "title":     { "type": "string" },
+                    "description":    { "type": "string" },
+                    "pubDate":       { "type": "string" },
+                    "guid":       { "type": "string" }
+                }
+              },
+              {
+                "name": "vcrecent",
+                "contentFeed": "50a7d61c077b285b4a0974b9",
                 "type": "feed",
                 "items": {
                     "title":     { "type": "string" },

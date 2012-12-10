@@ -21,6 +21,8 @@
   }
 
   function onGetUpdateDataSuccess( data ) {
+    var lastVisitFromCache = bc.core.cache( "lastVisit" );
+    var lastVisitDateObject = new Date( lastVisitFromCache );
     for (var i = 0; i < data.length; i++) {
       var thisItem = data[i];
       var fullDescription = thisItem.description;
@@ -29,9 +31,19 @@
       var releaseDate = $(fullDescription).find( ".date-display-single" ).html();
       data[i].docHTML = docHTML;
       data[i].releaseDate = releaseDate;
+      data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
     }
     _dataUpdate = data;
     setUpdateList( data );
+  }
+
+  function checkForRecent( pubDate, lastVisit ) {
+    var publishDateObject = new Date( pubDate );
+    if ( publishDateObject > lastVisit ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   function onGetRecentDataSuccess( data ) {
@@ -59,11 +71,7 @@
         data[i].linkPhrase = "Read the Entire Document";
         data[i].docHTML = $.trim(docHTML);
       }
-      /*var guidFull = data[i].guid;
-      var guidSpace = guidFull.indexOf(" ");
-      var guidNumber = guidFull.slice(0,guidSpace);
-      var data[i].guid = guidNumber;
-*/
+
       var lastVisitFromCache = bc.core.cache( "lastVisit" );
       var lastVisitDateObject = new Date( lastVisitFromCache );
       var publishDateObject = new Date( thisItem.pubDate );
@@ -73,7 +81,6 @@
         data[i].recentBoolean = false;
       }
     }
-    //bc.core.cache( "completeACRecent", data );
     _dataRecent = data;
     setRecentList( data );
   }
@@ -83,7 +90,6 @@
   }
 
   function setUpdateList( data ) {
-
     //The object we will pass to markup that will be used to generate the HTML.
     var context = { "acupdateitems": data };
 
@@ -96,11 +102,9 @@
     //Set the HTML of the element.
     $( "#product-updates-list" ).append( html ).listview();
     $( "#product-updates-list" ).find("ul").listview();
-
   }
 
   function setRecentList( data ) {
-
     //The object we will pass to markup that will be used to generate the HTML.
     var context = { "acrecentitems": data };
 
@@ -125,7 +129,6 @@
   }
 
   function getRecentItemByGUID( localGUID ) {
-    //var localCompleteData = bc.core.cache( "completeACRecent" );
     var len=_dataRecent.length;
     for(var i=0;i<len;i++){
       if(_dataRecent[i].guid == localGUID){
@@ -134,14 +137,14 @@
     }
   }
 
-  function injectUpdatePageContent( evt ) {
-    var guid = $(this).data("guid");
-    var selectedItem = getUpdateItemByGUID(guid);
-    var context = { selectedUpdate: selectedItem };
-    var markupTemplate = bc.templates["display-update-tmpl"];
-    var html = Mark.up( markupTemplate, context );
-    $( "#drill-down-detail-page" ).html( html );
-  }
+ function injectUpdatePageContent( evt ) {
+   var guid = $(this).data("guid");
+   var selectedItem = getUpdateItemByGUID(guid);
+   var context = { selectedUpdate: selectedItem };
+   var markupTemplate = bc.templates["display-update-tmpl"];
+   var html = Mark.up( markupTemplate, context );
+   $( "#drill-down-detail-page" ).html( html );
+ }
 
   function injectRecentPageContent( evt ) {
     var guid = $(this).data("guid");

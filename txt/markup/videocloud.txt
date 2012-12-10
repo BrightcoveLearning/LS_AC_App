@@ -1,11 +1,11 @@
 ===== display-update-item-tmpl
 <ul class="content-list" data-role="listview" data-inset="true">
-    {{acupdateitems}}
-        <li data-theme="d" data-guid="{{guid}}">
-            <a href="#content-details" data-transition="slide"><h3>{{title}}</h3>
-            <p class="content-description">{{pubDate}}</p></a>
-        </li>
-    {{/acupdateitems}}
+  {{vcupdateitems}}
+      <li data-theme="d" data-guid="{{guid}}">
+          <a href="#content-details" data-transition="slide"><h3>{{title}}</h3>
+          <p class="content-description">{{pubDate}}</p></a>
+      </li>
+  {{/vcupdateitems}}
 </ul>
 
 ===== display-update-tmpl
@@ -14,12 +14,12 @@ Release Date: {{selectedUpdate.releaseDate}}<br />
 
 ===== display-recent-item-tmpl
 <ul class="content-list" data-role="listview" data-inset="true">
-	{{acrecentitems}}
-		<li data-theme="d" {{if recentBoolean}}class="highlightForRecent"{{/if}} data-guid="{{guid}}">
-			<a href="#content-details" data-transition="slide"><h3>{{title}}</h3>
-			<p class="content-description">{{displayDescription}}</p></a>
-		</li>
-	{{/acrecentitems}}
+  {{vcrecentitems}}
+    <li data-theme="d">
+      <a href="#content-details" data-transition="slide"><h3>{{title}}</h3>
+      <p class="content-description">{{displayDescription}}</p></a>
+    </li>
+  {{/vcrecentitems}}
 </ul>
 
 ===== display-doc-tmpl
