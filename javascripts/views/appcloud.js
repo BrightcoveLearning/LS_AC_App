@@ -5,6 +5,9 @@
   var _dataUpdate = {};
   var _dataRecent = {};
 
+  var recentUpdates = 0;
+  var recentContent = 0;
+
   function initialize() {
     bc.core.cache( "lastVisit", "2012-06-01T22:04:23.763Z" );
 
@@ -32,6 +35,9 @@
       data[i].docHTML = docHTML;
       data[i].releaseDate = releaseDate;
       data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
+      if ( data[i].recentBoolean ) {
+        recentUpdates ++;
+      }
     }
     _dataUpdate = data;
     setUpdateList( data );
@@ -65,6 +71,9 @@
         data[i].docHTML = $.trim(docHTML);
       }
       data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
+      if ( data[i].recentBoolean ) {
+        recentContent ++;
+      }
     }
     _dataRecent = data;
     setRecentList( data );
@@ -75,6 +84,8 @@
   }
 
   function setUpdateList( data ) {
+    $(".ui-li-count.updates").html( recentUpdates );
+
     //The object we will pass to markup that will be used to generate the HTML.
     var context = { "acupdateitems": data };
 
@@ -90,6 +101,8 @@
   }
 
   function setRecentList( data ) {
+    $(".ui-li-count.content").html( recentContent );
+
     //The object we will pass to markup that will be used to generate the HTML.
     var context = { "acrecentitems": data };
 
