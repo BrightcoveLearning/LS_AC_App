@@ -21,6 +21,8 @@
   }
 
   function onGetUpdateDataSuccess( data ) {
+    var lastVisitFromCache = bc.core.cache( "lastVisit" );
+    var lastVisitDateObject = new Date( lastVisitFromCache );
     for (var i = 0; i < data.length; i++) {
       var thisItem = data[i];
       var fullDescription = thisItem.description;
@@ -29,12 +31,15 @@
       var releaseDate = $(fullDescription).find( ".date-display-single" ).html();
       data[i].docHTML = docHTML;
       data[i].releaseDate = releaseDate;
+      data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
     }
     _dataUpdate = data;
     setUpdateList( data );
   }
 
   function onGetRecentDataSuccess( data ) {
+    var lastVisitFromCache = bc.core.cache( "lastVisit" );
+    var lastVisitDateObject = new Date( lastVisitFromCache );
     for (var i = 0; i < data.length; i++) {
       var thisItem = data[i];
       var fullDescription = thisItem.description;
@@ -59,15 +64,7 @@
         data[i].linkPhrase = "Read the Entire Document";
         data[i].docHTML = $.trim(docHTML);
       }
-
-      var lastVisitFromCache = bc.core.cache( "lastVisit" );
-      var lastVisitDateObject = new Date( lastVisitFromCache );
-      var publishDateObject = new Date( thisItem.pubDate );
-      if ( publishDateObject > lastVisitDateObject ) {
-        data[i].recentBoolean = true;
-      } else {
-        data[i].recentBoolean = false;
-      }
+      data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
     }
     _dataRecent = data;
     setRecentList( data );
@@ -107,24 +104,6 @@
     $( "#recent-content-list" ).find("ul").listview();
   }
 
-  function getUpdateItemByGUID( localGUID ) {
-    var len=_dataUpdate.length;
-    for(var i=0;i<len;i++){
-      if(_dataUpdate[i].guid == localGUID){
-        return _dataUpdate[i];
-      }
-    }
-  }
-
-  function getRecentItemByGUID( localGUID ) {
-    var len=_dataRecent.length;
-    for(var i=0;i<len;i++){
-      if(_dataRecent[i].guid == localGUID){
-        return _dataRecent[i];
-      }
-    }
-  }
-
  function injectUpdatePageContent( evt ) {
    var guid = $(this).data("guid");
    var selectedItem = getUpdateItemByGUID(guid);
@@ -148,6 +127,33 @@
 
     var html = Mark.up( markupTemplate, context );
     $( "#drill-down-detail-page" ).html( html );
+  }
+
+  function getUpdateItemByGUID( localGUID ) {
+    var len=_dataUpdate.length;
+    for(var i=0;i<len;i++){
+      if(_dataUpdate[i].guid == localGUID){
+        return _dataUpdate[i];
+      }
+    }
+  }
+
+  function getRecentItemByGUID( localGUID ) {
+    var len=_dataRecent.length;
+    for(var i=0;i<len;i++){
+      if(_dataRecent[i].guid == localGUID){
+        return _dataRecent[i];
+      }
+    }
+  }
+
+  function checkForRecent( pubDate, lastVisit ) {
+    var publishDateObject = new Date( pubDate );
+    if ( publishDateObject > lastVisit ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 })( jQuery )
