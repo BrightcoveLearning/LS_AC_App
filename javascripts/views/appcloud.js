@@ -4,15 +4,22 @@
 
   var _dataUpdate = {};
   var _dataRecent = {};
+  var _dataVideos = {};
 
   var recentUpdates = 0;
   var recentContent = 0;
+  var recentVideos = 0;
+  var detailsShowningGUID="";
 
   function initialize() {
+    $.mobile.defaultPageTransition = 'none';
+    $.mobile.activeBtnClass = 'aNonExistentSelector';
+
     bc.core.cache( "lastVisit", "2012-06-01T22:04:23.763Z" );
 
     bc.core.getData("acrecent", onGetRecentDataSuccess, onGetDataError);
     bc.core.getData("acupdate", onGetUpdateDataSuccess, onGetDataError);
+    bc.core.getData("acvideos", onGetVideoDataSuccess, onGetDataError);
 
     registerEventListeners();
   }
@@ -20,6 +27,35 @@
   function registerEventListeners() {
     $( "#product-updates-list" ).on( "tap", "li", injectUpdatePageContent );
     $( "#recent-content-list" ).on( "tap", "li", injectRecentPageContent );
+    $( "#recent-videos-list" ).on( "tap", "li", injectRecentPageContent );
+    $( '#content-details' ).live( "pageshow", showDetails );
+  }
+
+  function showDetails( event, ui ) {
+    console.log("details page shown");
+  }
+
+  function onGetVideoDataSuccess( data ) {
+    var lastVisitFromCache = bc.core.cache( "lastVisit" );
+    var lastVisitDateObject = new Date( lastVisitFromCache );
+    for (var i = 0; i < data.length; i++) {
+      var thisItem = data[i];
+      var fullDescription = thisItem.description;
+      var theLink = thisItem.link;
+      var displayDescription = $(fullDescription).find( ".field-item.odd" ).html();
+      var displayDescription = $.trim(displayDescription);
+      var videoID = $(fullDescription).filter('.field-field-video-id').find('.odd').html();
+      var videoID = $.trim(videoID);
+      data[i].isVideo = true;
+      data[i].displayDescription = displayDescription;
+      data[i].videoID = videoID;
+      data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
+      if ( data[i].recentBoolean ) {
+        recentVideos ++;
+      }
+    }
+    _dataVideos = data;
+    setVideosList( data );
   }
 
   function onGetUpdateDataSuccess( data ) {
@@ -79,7 +115,24 @@
   }
 
   function onGetDataError( error ) {
+    console.log(error);
+  }
 
+  function setVideosList( data ) {
+    $(".ui-li-count.videos").html( recentVideos );
+
+    //The object we will pass to markup that will be used to generate the HTML.
+    var context = { "acrecentitems": data };
+
+    //The SDK automatically parses any templates you associate with this view on the bc.templates object.
+    var markupTemplate = bc.templates["display-recent-item-tmpl"];
+
+    //The generated HTML for this template.
+    var html = Mark.up( markupTemplate, context );
+
+    //Set the HTML of the element.
+    $( "#recent-videos-list" ).append( html ).listview();
+    $( "#recent-videos-list" ).find("ul").listview();
   }
 
   function setUpdateList( data ) {
@@ -118,6 +171,7 @@
 
  function injectUpdatePageContent( evt ) {
    var guid = $(this).data("guid");
+   detailsShowningGUID =  guid;
    var selectedItem = getUpdateItemByGUID(guid);
    var context = { selectedUpdate: selectedItem };
    var markupTemplate = bc.templates["display-update-tmpl"];

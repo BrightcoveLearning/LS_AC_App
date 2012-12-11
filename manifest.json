@@ -45,6 +45,19 @@
                     "pubDate":       { "type": "string" },
                     "guid":       { "type": "string" }
                 }
+              },
+              {
+                "name": "acvideos",
+                "contentFeed": "50c745b92fa4024c1f129628",
+                "type": "feed",
+                "items": {
+                    "title":     { "type": "string" },
+                    "link":       { "type": "string" },
+                    "description":    { "type": "string" },
+                    "category":       { "type": "string" },
+                    "pubDate":       { "type": "string" },
+                    "guid":       { "type": "string" }
+                }
               }
             ]
         },

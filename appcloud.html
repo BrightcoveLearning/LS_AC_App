@@ -11,7 +11,6 @@
 		<link type="text/css" rel="stylesheet" href="stylesheets/styles.css"/>
 		<script type="text/javascript" src="javascripts/lib/brightcove-app-cloud-1.12.min.js"></script>
 		<script type="text/javascript" src="javascripts/views/appcloud.js"></script>
-		<script src="javascripts/lib/custom.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	</head>
 <body>
@@ -34,7 +33,7 @@
 		<ul class="nav-left" data-role="listview" data-inset="true">
 			<li data-theme="a"><a href="#content-notifications">Content notifications<span class="ui-li-count content"></span></a></li>
 			<li><a href="#product-updates">Product updates<span class="ui-li-count updates"></span></a></li>
-			<li><a href="#">Training videos<span class="ui-li-count">12</span></a>
+			<li><a href="#videos-notifications">Training videos<span class="ui-li-count videos"></span></a>
 			</li>
 		</ul>
 
@@ -86,7 +85,7 @@
 		<ul class="nav-left" data-role="listview" data-inset="true">
 			<li><a href="#content-notifications">Content notifications<span class="ui-li-count content"></span></a></li>
 			<li data-theme="a"><a href="#product-updates">Product updates<span class="ui-li-count updates"></span></a></li>
-			<li><a href="#">Training videos<span class="ui-li-count">12</span></a>
+			<li><a href="#videos-notifications">Training videos<span class="ui-li-count videos"></span></a>
 			</li>
 		</ul>
 
@@ -97,6 +96,38 @@
 		<br/><br/><br/>
 	</div><!-- /content -->
 </div><!-- /page -->
+
+<div id="videos-notifications" data-role="page">
+
+	<div id="nav-top">
+		<span data-role="controlgroup" data-type="horizontal">
+			<a href="VideoCloud.html" rel="external" data-role="button"><img src="images/icons/VideoCloud.png" width="218" height="30"></a>
+			<a href="AppCloud.html" data-role="button" class="nav-top-selected-product"><img src="images/icons/AppCloud.png" width="184" height="30"></a>
+		</span>
+
+		<img id="logo-corporate" src="images/icons/logo-corporate.png" width="159" height="50">
+	</div>
+
+	<div data-role="content">
+
+		<h1>App Cloud resources</h1>
+
+		<ul class="nav-left" data-role="listview" data-inset="true">
+			<li><a href="#content-notifications">Content notifications<span class="ui-li-count content"></span></a></li>
+			<li><a href="#product-updates">Product updates<span class="ui-li-count updates"></span></a></li>
+			<li data-theme="a"><a href="#videos-notifications">Training videos<span class="ui-li-count videos"></span></a>
+			</li>
+		</ul>
+
+		<section id="recent-videos-list">
+
+		</section>
+
+		<br/><br/><br/>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
 
 </body>
 </html>
