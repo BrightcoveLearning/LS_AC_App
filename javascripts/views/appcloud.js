@@ -29,10 +29,19 @@
     $( "#recent-content-list" ).on( "tap", "li", injectRecentPageContent );
     $( "#recent-videos-list" ).on( "tap", "li", injectRecentPageContent );
     $( '#content-details' ).live( "pageshow", showDetails );
+    $( "#topNavVC").on( "tap" , topNavClicked );
+  }
+
+  function topNavClicked( event ) {
+console.log("top nav clicked");
+    bc.device.navigateToView("videocloud.html");
+    return false;
   }
 
   function showDetails( event, ui ) {
-    console.log("details page shown");
+    console.log(ui);
+    var displayedItem = getRecentItemByGUID( detailsShowningGUID );
+    displayedItem.recentBoolean = false;
   }
 
   function onGetVideoDataSuccess( data ) {
@@ -171,7 +180,6 @@
 
  function injectUpdatePageContent( evt ) {
    var guid = $(this).data("guid");
-   detailsShowningGUID =  guid;
    var selectedItem = getUpdateItemByGUID(guid);
    var context = { selectedUpdate: selectedItem };
    var markupTemplate = bc.templates["display-update-tmpl"];
@@ -181,6 +189,7 @@
 
   function injectRecentPageContent( evt ) {
     var guid = $(this).data("guid");
+    detailsShowningGUID =  guid;
     var selectedItem = getRecentItemByGUID(guid);
 
     if (selectedItem.isVideo) {

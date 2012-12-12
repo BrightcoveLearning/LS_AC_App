@@ -8,10 +8,10 @@
     ],
     "platformConfig": {
         "android": {
-            "nativeNavigation": true
+            "nativeNavigation": false
         },
         "iOS": {
-            "nativeNavigation": true
+            "nativeNavigation": false
         }
     },
     "views": [
@@ -82,6 +82,19 @@
               {
                 "name": "vcrecent",
                 "contentFeed": "50a7d61c077b285b4a0974b9",
+                "type": "feed",
+                "items": {
+                    "title":     { "type": "string" },
+                    "link":       { "type": "string" },
+                    "description":    { "type": "string" },
+                    "category":       { "type": "string" },
+                    "pubDate":       { "type": "string" },
+                    "guid":       { "type": "string" }
+                }
+              },
+              {
+                "name": "vcvideos",
+                "contentFeed": "50ad16b7077b28488405ce6e",
                 "type": "feed",
                 "items": {
                     "title":     { "type": "string" },
