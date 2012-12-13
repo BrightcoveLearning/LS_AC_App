@@ -16,6 +16,27 @@
     },
     "views": [
         {
+            "navigationTitle": "Brightcove Page",
+            "navigationIcon": "images/icons/logo-corporate.png",
+            "uri": "brightcove.html",
+            "locales": "./txt/locales/en.txt",
+            "markup": "./txt/markup/brightcove.txt",
+            "data": [
+              {
+                "name": "corpblog",
+                "contentFeed": "50ca4fef42ead55f1e029fb1",
+                "type": "feed",
+                "items": {
+                    "title":        { "type": "string" },
+                    "link":         { "type": "string" },
+                    "description":  { "type": "string" },
+                    "pubDate":      { "type": "string" },
+                    "guid":         { "type": "string" }
+                }
+              }
+            ]
+        },
+        {
             "navigationTitle": "App Cloud Page",
             "navigationIcon": "images/icons/appcloud.png",
             "uri": "appcloud.html",
@@ -106,13 +127,6 @@
                 }
               }
             ]
-        },
-        {
-            "navigationTitle": "Brightcove Page",
-            "navigationIcon": "images/icons/videocloud.png",
-            "uri": "brightcove.html",
-            "locales": "./txt/locales/en.txt",
-            "markup": "./txt/markup/brightcove.txt"
         }
     ]
 }

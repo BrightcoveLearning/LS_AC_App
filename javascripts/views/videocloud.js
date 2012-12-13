@@ -28,11 +28,15 @@
     $( "#product-updates-list" ).on( "tap", "li", injectUpdatePageContent );
     $( "#recent-content-list" ).on( "tap", "li", injectRecentPageContent );
     $( "#recent-videos-list" ).on( "tap", "li", injectRecentPageContent );
-    $( '#content-details' ).live( "pageshow", showDetails );
-    $("body").on( "tap", ".mainNavTarget", topNavClicked);
+    $("body").on( "tap", ".mainNavTargetBC", topNavClickedBC);
+    $("body").on( "tap", ".mainNavTargetAC", topNavClickedAC);
   }
 
-  function topNavClicked( event ) {
+  function topNavClickedBC( event ) {
+    bc.device.navigateToView("brightcove.html");
+  }
+
+  function topNavClickedAC( event ) {
     bc.device.navigateToView("appcloud.html");
   }
 

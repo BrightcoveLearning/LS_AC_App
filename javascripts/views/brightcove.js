@@ -2,21 +2,18 @@
 
 	$( bc ).bind( "init", initialize );
 
-	var _dataUpdate = {};
-	var _dataRecent = {};
-	var _dataVideos = {};
-	var _twitterFeed = {};
+	var _dataCorpBlog = {};
+	var _dataTwitterFeed = {};
 
-	var recentUpdates = 0;
-	var recentContent = 0;
-	var recentVideos = 0;
-	var recentTweets = 0;
+	var recentTwitter = 0;
+	var recentCorpBlog = 0;
 
 	function initialize() {
 		$.mobile.defaultPageTransition = 'none';
 		$.mobile.activeBtnClass = 'aNonExistentSelector';
 
 		bc.core.cache( "lastVisit", "2012-06-01T22:04:23.763Z" );
+
 
 		bc.core.getData("acrecent", onGetRecentDataSuccess, onGetDataError);
 		bc.core.getData("acupdate", onGetUpdateDataSuccess, onGetDataError);

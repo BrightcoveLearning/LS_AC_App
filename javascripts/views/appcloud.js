@@ -40,7 +40,6 @@
 		_twitterFeed = JSON.parse( data );
 	}
 
-
 	function topNavClickedBC( event ) {
 		bc.device.navigateToView("brightcove.html");
 	}
