@@ -106,6 +106,13 @@
                 }
               }
             ]
+        },
+        {
+            "navigationTitle": "Brightcove Page",
+            "navigationIcon": "images/icons/videocloud.png",
+            "uri": "brightcove.html",
+            "locales": "./txt/locales/en.txt",
+            "markup": "./txt/markup/brightcove.txt"
         }
     ]
 }

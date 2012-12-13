@@ -32,7 +32,7 @@
 		$( "#recent-content-list" ).on( "tap", "li", injectRecentPageContent );
 		$( "#recent-videos-list" ).on( "tap", "li", injectRecentPageContent );
 		//$( '#content-details' ).live( "pageshow", showDetails );
-		$("body").on( "tap", ".mainNavTargetBC", topNavClickedBC);
+		$("body").on( "tap", ".mainNavTargetAC", topNavClickedAC);
 		$("body").on( "tap", ".mainNavTargetVC", topNavClickedVC);
 	}
 
@@ -40,13 +40,12 @@
 		_twitterFeed = JSON.parse( data );
 	}
 
-
-	function topNavClickedBC( event ) {
-		bc.device.navigateToView("brightcove.html");
-	}
-
 	function topNavClickedVC( event ) {
 		bc.device.navigateToView("videocloud.html");
+	}
+
+	function topNavClickedAC( event ) {
+		bc.device.navigateToView("appcloud.html");
 	}
 
 	function showDetails( event, ui ) {

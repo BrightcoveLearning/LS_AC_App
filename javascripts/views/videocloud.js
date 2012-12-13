@@ -29,7 +29,7 @@
     $( "#recent-content-list" ).on( "tap", "li", injectRecentPageContent );
     $( "#recent-videos-list" ).on( "tap", "li", injectRecentPageContent );
     $( '#content-details' ).live( "pageshow", showDetails );
-    $( "#topNavAC").on( "tap" , topNavClicked );
+    $("body").on( "tap", ".mainNavTarget", topNavClicked);
   }
 
   function topNavClicked( event ) {
@@ -38,8 +38,6 @@
 
   function showDetails( event, ui ) {
     console.log(ui);
-    var displayedItem = getRecentItemByGUID( detailsShowningGUID );
-    displayedItem.recentBoolean = false;
   }
 
   function onGetVideoDataSuccess( data ) {
@@ -182,6 +180,10 @@
    var context = { selectedUpdate: selectedItem };
    var markupTemplate = bc.templates["display-update-tmpl"];
    var html = Mark.up( markupTemplate, context );
+
+  selectedItem.recentBoolean = false;
+  recentUpdates --;
+
    $( "#drill-down-detail-page" ).html( html );
  }
 
@@ -199,6 +201,10 @@
     }
 
     var html = Mark.up( markupTemplate, context );
+
+    selectedItem.recentBoolean = false;
+    recentContent --;
+
     $( "#drill-down-detail-page" ).html( html );
   }
 
