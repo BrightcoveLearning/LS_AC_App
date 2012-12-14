@@ -14,27 +14,46 @@
 
 		bc.core.cache( "lastVisit", "2012-06-01T22:04:23.763Z" );
 
-
-		bc.core.getData("acrecent", onGetRecentDataSuccess, onGetDataError);
-		bc.core.getData("acupdate", onGetUpdateDataSuccess, onGetDataError);
-		bc.core.getData("acvideos", onGetVideoDataSuccess, onGetDataError);
-		//bc.core.getData("bctwitter", onGetTwitterSuccess, onGetDataError);
 		bc.device.fetchContentsOfURL("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=brightcove&include_rts=1",onGetTwitterSuccess, onGetDataError);
+		bc.core.getData("corpblog", onGetCorpBlogSuccess, onGetDataError);
 
 		registerEventListeners();
 	}
 
 	function registerEventListeners() {
-		$( "#product-updates-list" ).on( "tap", "li", injectUpdatePageContent );
-		$( "#recent-content-list" ).on( "tap", "li", injectRecentPageContent );
-		$( "#recent-videos-list" ).on( "tap", "li", injectRecentPageContent );
-		//$( '#content-details' ).live( "pageshow", showDetails );
+		$( "#corporate-blog-list" ).on( "tap", "li", injectCorpBlogContent );
+		$( "#twitter-list" ).on( "tap", "li", injectTwitterContent );
 		$("body").on( "tap", ".mainNavTargetAC", topNavClickedAC);
 		$("body").on( "tap", ".mainNavTargetVC", topNavClickedVC);
 	}
 
+	function onGetCorpBlogSuccess( data ){
+		for (var i = 0; i < data.length; i++) {
+			var thisItem = data[i];
+			var fullDescription = thisItem.description;
+			var forTease = $(fullDescription).closest('p').html();
+			data[i].forTease = forTease
+			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
+			if ( data[i].recentBoolean ) {
+				recentCorpBlog ++;
+			}
+		}
+		_dataCorpBlog = data;
+		setCorpBlogList( data );
+	}
+
 	function onGetTwitterSuccess( data ){
-		_twitterFeed = JSON.parse( data );
+		var localData = JSON.parse( data );
+		for (var i = 0; i < localData.length; i++) {
+			var thisItem = localData[i];
+			localData[i].guid = thisItem.id;
+			localData[i].recentBoolean = checkForRecent( thisItem.created_at );
+			if ( localData[i].recentBoolean ) {
+				recentTwitter ++;
+			}
+		}
+		_dataTwitterFeed = localData;
+		setTwitterList( _dataTwitterFeed );
 	}
 
 	function topNavClickedVC( event ) {
@@ -49,215 +68,105 @@
 		console.log(ui);
 	}
 
-	function onGetVideoDataSuccess( data ) {
-		var lastVisitFromCache = bc.core.cache( "lastVisit" );
-		var lastVisitDateObject = new Date( lastVisitFromCache );
-		for (var i = 0; i < data.length; i++) {
-			var thisItem = data[i];
-			var fullDescription = thisItem.description;
-			var theLink = thisItem.link;
-			var displayDescription = $(fullDescription).find( ".field-item.odd" ).html();
-			var displayDescription = $.trim(displayDescription);
-			var videoID = $(fullDescription).filter('.field-field-video-id').find('.odd').html();
-			var videoID = $.trim(videoID);
-			data[i].isVideo = true;
-			data[i].displayDescription = displayDescription;
-			data[i].videoID = videoID;
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
-			if ( data[i].recentBoolean ) {
-				recentVideos ++;
-			}
-		}
-		_dataVideos = data;
-		setVideosList( data );
-	}
-
-	function onGetUpdateDataSuccess( data ) {
-		var lastVisitFromCache = bc.core.cache( "lastVisit" );
-		var lastVisitDateObject = new Date( lastVisitFromCache );
-		for (var i = 0; i < data.length; i++) {
-			var thisItem = data[i];
-			var fullDescription = thisItem.description;
-			var startOfH3Location = fullDescription.indexOf("<h3>");
-			var docHTML = fullDescription.slice( startOfH3Location );
-			var releaseDate = $(fullDescription).find( ".date-display-single" ).html();
-			data[i].docHTML = docHTML;
-			data[i].releaseDate = releaseDate;
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
-			if ( data[i].recentBoolean ) {
-				recentUpdates ++;
-			}
-		}
-		_dataUpdate = data;
-		setUpdateList( data );
-	}
-
-	function onGetRecentDataSuccess( data ) {
-		var lastVisitFromCache = bc.core.cache( "lastVisit" );
-		var lastVisitDateObject = new Date( lastVisitFromCache );
-		for (var i = 0; i < data.length; i++) {
-			var thisItem = data[i];
-			var fullDescription = thisItem.description;
-			var theLink = thisItem.link;
-			var isVideo = theLink.indexOf( "training-videos" ) != -1;
-			if ( isVideo ){
-				var displayDescription = $(fullDescription).find( ".field-item.odd" ).html();
-				var displayDescription = $.trim(displayDescription);
-				var videoID = $(fullDescription).filter('.field-field-video-id').find('.odd').html();
-				var videoID = $.trim(videoID);
-				data[i].displayDescription = displayDescription;
-				data[i].isVideo = true;
-				data[i].linkPhrase = "Watch the Video";
-				data[i].videoID = videoID;
-			} else {
-				var displayDescription = $(fullDescription).find( ".BCL-objective" ).html();
-				var displayDescription = $.trim(displayDescription);
-				var endOfBreakLocation = fullDescription.indexOf("<!--break-->") + 12;
-				var docHTML = fullDescription.slice( endOfBreakLocation );
-				data[i].displayDescription = displayDescription;
-				data[i].isVideo = false;
-				data[i].linkPhrase = "Read the Entire Document";
-				data[i].docHTML = $.trim(docHTML);
-			}
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
-			if ( data[i].recentBoolean ) {
-				recentContent ++;
-			}
-		}
-		_dataRecent = data;
-		setRecentList( data );
-	}
-
 	function onGetDataError( error ) {
 //console.log(error);
 	}
 
-	function setVideosList( data ) {
-		$(".ui-li-count.videos").html( recentVideos );
+	function setTwitterList( data ){
+		$(".ui-li-count.twitter").html( recentTwitter );
 
 		//The object we will pass to markup that will be used to generate the HTML.
-		var context = { "acrecentitems": data };
+		var context = { "twitteritems": data };
 
 		//The SDK automatically parses any templates you associate with this view on the bc.templates object.
-		var markupTemplate = bc.templates["display-recent-item-tmpl"];
+		var markupTemplate = bc.templates["display-twitter-tmpl"];
 
 		//The generated HTML for this template.
 		var html = Mark.up( markupTemplate, context );
 
 		//Set the HTML of the element.
-		$( "#recent-videos-list" ).append( html ).listview();
-		$( "#recent-videos-list" ).find("ul").listview();
+		$( "#twitter-list" ).append( html ).listview();
+		$( "#twitter-list" ).find("ul").listview();
 	}
 
-	function setUpdateList( data ) {
-		$(".ui-li-count.updates").html( recentUpdates );
+	function setCorpBlogList ( data ){
+		$(".ui-li-count.corpblog").html( recentCorpBlog );
 
 		//The object we will pass to markup that will be used to generate the HTML.
-		var context = { "acupdateitems": data };
+		var context = { "bccorpblogitems": data };
 
 		//The SDK automatically parses any templates you associate with this view on the bc.templates object.
-		var markupTemplate = bc.templates["display-update-item-tmpl"];
+		var markupTemplate = bc.templates["display-blog-tmpl"];
 
 		//The generated HTML for this template.
 		var html = Mark.up( markupTemplate, context );
 
 		//Set the HTML of the element.
-		$( "#product-updates-list" ).append( html ).listview();
-		$( "#product-updates-list" ).find("ul").listview();
+		$( "#corporate-blog-list" ).append( html ).listview();
+		$( "#corporate-blog-list" ).find("ul").listview();
 	}
 
-	function setRecentList( data ) {
-		$(".ui-li-count.content").html( recentContent );
-
-		//The object we will pass to markup that will be used to generate the HTML.
-		var context = { "acrecentitems": data };
-
-		//The SDK automatically parses any templates you associate with this view on the bc.templates object.
-		var markupTemplate = bc.templates["display-recent-item-tmpl"];
-
-		//The generated HTML for this template.
-		var html = Mark.up( markupTemplate, context );
-
-		//Set the HTML of the element.
-		$( "#recent-content-list" ).append( html ).listview();
-		$( "#recent-content-list" ).find("ul").listview();
-	}
-
- function injectUpdatePageContent( evt ) {
-	var guid = $(this).data("guid");
-	var selectedItem = getUpdateItemByGUID(guid);
-	var context = { selectedUpdate: selectedItem };
-	var markupTemplate = bc.templates["display-update-tmpl"];
-	var html = Mark.up( markupTemplate, context );
-
-	selectedItem.recentBoolean = false;
-
-	$(this).removeAttr("data-theme");
-	$(this).attr("data-theme","c").removeClass("ui-btn-up-e").addClass("ui-btn-up-c");
-	$(this).trigger("enhance");
-
-	recentUpdates --;
-	$(".ui-li-count.updates").html( recentUpdates );
-
-	$( "#drill-down-detail-page" ).html( html );
- }
-
-	function injectRecentPageContent( evt ) {
+	function injectCorpBlogContent( evt ){
 		var guid = $(this).data("guid");
-		detailsShowningGUID =  guid;
-		var selectedItem = getRecentItemByGUID(guid);
-
-		if (selectedItem.isVideo) {
-			var context = { "videoID": selectedItem.videoID };
-			var markupTemplate = bc.templates["play-video-tmpl"];
-		} else {
-			var context = { "docHTML": selectedItem.docHTML };
-			var markupTemplate = bc.templates["display-doc-tmpl"];
-		}
-
+		var selectedItem = getCorpBlogItemByGUID(guid);
+		var context = { selectedCorpBlog: selectedItem };
+		var markupTemplate = bc.templates["display-corpblog-tmpl"];
 		var html = Mark.up( markupTemplate, context );
 
 		selectedItem.recentBoolean = false;
-		recentContent --;
+
 		$(this).removeAttr("data-theme");
 		$(this).attr("data-theme","c").removeClass("ui-btn-up-e").addClass("ui-btn-up-c");
 		$(this).trigger("enhance");
-		//$(this).trigger("create");
-		//console.log($(this).closest("ul"));
-		//$(this).closest("ul").listview("refresh");
-		//$(this).closest("ul").listview();
-		//$('#mylist').listview();
-		//$("#content-notifications").page("destroy").page();
-		//if ( $("#content-notifications").data("page") ) {
-		//      $(this).closest("ul").listview("refresh");
-	    //};
-		//$(this).closest("ul").listview();
-		$(".ui-li-count.content").html( recentContent );
+
+		recentCorpBlog --;
+		$(".ui-li-count.corpblog").html( recentCorpBlog );
 
 		$( "#drill-down-detail-page" ).html( html );
 	}
 
-	function getUpdateItemByGUID( localGUID ) {
-		var len=_dataUpdate.length;
+	function injectTwitterContent( evt ){
+		var guid = $(this).data("guid");
+		var selectedItem = getTwitterItemByGUID(guid);
+		var context = { selectedTwitter: selectedItem };
+		var markupTemplate = bc.templates["display-twitteritem-tmpl"];
+		var html = Mark.up( markupTemplate, context );
+
+		selectedItem.recentBoolean = false;
+
+		$(this).removeAttr("data-theme");
+		$(this).attr("data-theme","c").removeClass("ui-btn-up-e").addClass("ui-btn-up-c");
+		$(this).trigger("enhance");
+
+		recentTwitter --;
+		$(".ui-li-count.corpblog").html( recentCorpBlog );
+
+		$( "#drill-down-detail-page" ).html( html );
+	}
+
+	function getTwitterItemByGUID( localGUID ) {
+		var len=_dataTwitterFeed.length;
 		for(var i=0;i<len;i++){
-			if(_dataUpdate[i].guid == localGUID){
-				return _dataUpdate[i];
+			if(_dataTwitterFeed[i].guid == localGUID){
+				return _dataTwitterFeed[i];
 			}
 		}
 	}
 
-	function getRecentItemByGUID( localGUID ) {
-		var len=_dataRecent.length;
+	function getCorpBlogItemByGUID( localGUID ) {
+		var len=_dataCorpBlog.length;
 		for(var i=0;i<len;i++){
-			if(_dataRecent[i].guid == localGUID){
-				return _dataRecent[i];
+			if(_dataCorpBlog[i].guid == localGUID){
+				return _dataCorpBlog[i];
 			}
 		}
 	}
 
-	function checkForRecent( pubDate, lastVisit ) {
+	function checkForRecent( pubDate ) {
 		var publishDateObject = new Date( pubDate );
-		if ( publishDateObject > lastVisit ) {
+		var lastVisitFromCache = bc.core.cache( "lastVisit" );
+		var lastVisitDateObject = new Date( lastVisitFromCache );
+		if ( publishDateObject > lastVisitDateObject ) {
 			return true;
 		} else {
 			return false;
