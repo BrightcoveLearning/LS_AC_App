@@ -127,6 +127,27 @@
                 }
               }
             ]
+        },
+        {
+            "navigationTitle": "Zencoder Page",
+            "navigationIcon": "images/icons/videocloud.png",
+            "uri": "zencoder.html",
+            "locales": "./txt/locales/en.txt",
+            "markup": "./txt/markup/zencoder.txt",
+            "data": [
+              {
+                "name": "zcblog",
+                "contentFeed": "50cb8bd142ead54ed123a756",
+                "type": "feed",
+                "items": {
+                    "title":     { "type": "string" },
+                    "description":    { "type": "string" },
+                    "pubDate":       { "type": "string" },
+                    "guid":       { "type": "string" },
+                    "content_encoded": {"type": "string"}
+                }
+              }
+            ]
         }
     ]
 }

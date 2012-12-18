@@ -34,6 +34,7 @@
 		//$( '#content-details' ).live( "pageshow", showDetails );
 		$("body").on( "tap", ".mainNavTargetBC", topNavClickedBC);
 		$("body").on( "tap", ".mainNavTargetVC", topNavClickedVC);
+		$("body").on( "tap", ".mainNavTargetZC", topNavClickedZC);
 	}
 
 	function onGetTwitterSuccess( data ){
@@ -46,6 +47,10 @@
 
 	function topNavClickedVC( event ) {
 		bc.device.navigateToView("videocloud.html");
+	}
+
+	function topNavClickedZC( event ) {
+		bc.device.navigateToView("zencoder.html");
 	}
 
 	function showDetails( event, ui ) {
@@ -225,16 +230,6 @@
 		$(this).removeAttr("data-theme");
 		$(this).attr("data-theme","c").removeClass("ui-btn-up-e").addClass("ui-btn-up-c");
 		$(this).trigger("enhance");
-		//$(this).trigger("create");
-		//console.log($(this).closest("ul"));
-		//$(this).closest("ul").listview("refresh");
-		//$(this).closest("ul").listview();
-		//$('#mylist').listview();
-		//$("#content-notifications").page("destroy").page();
-		//if ( $("#content-notifications").data("page") ) {
-		//      $(this).closest("ul").listview("refresh");
-	    //};
-		//$(this).closest("ul").listview();
 		$(".ui-li-count.content").html( recentContent );
 
 		$( "#drill-down-detail-page" ).html( html );

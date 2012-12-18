@@ -14,8 +14,8 @@
 
 		bc.core.cache( "lastVisit", "2012-12-11T22:04:23.763Z" );
 
-		bc.device.fetchContentsOfURL("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=brightcove&include_rts=1",onGetTwitterSuccess, onGetDataError);
-		bc.core.getData("corpblog", onGetCorpBlogSuccess, onGetDataError);
+		bc.device.fetchContentsOfURL("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=zencoderinc&include_rts=1",onGetTwitterSuccess, onGetDataError);
+		bc.core.getData("zcblog", onGetCorpBlogSuccess, onGetDataError);
 
 		registerEventListeners();
 	}
@@ -23,17 +23,17 @@
 	function registerEventListeners() {
 		$( "#corporate-blog-list" ).on( "tap", "li", injectCorpBlogContent );
 		$( "#twitter-list" ).on( "tap", "li", injectTwitterContent );
+		$("body").on( "tap", ".mainNavTargetBC", topNavClickedBC);
 		$("body").on( "tap", ".mainNavTargetAC", topNavClickedAC);
 		$("body").on( "tap", ".mainNavTargetVC", topNavClickedVC);
-		$("body").on( "tap", ".mainNavTargetZC", topNavClickedZC);
 	}
 
 	function onGetCorpBlogSuccess( data ){
 		for (var i = 0; i < data.length; i++) {
 			var thisItem = data[i];
-			var fullDescription = thisItem.description;
-			var forTease = $(fullDescription).closest('p').html();
-			data[i].forTease = forTease.replace(/<[^>]+>[^<]*<[^>]+>|<[^\/]+\/>/ig, "");
+			//var fullDescription = thisItem.description;
+			//var forTease = $(fullDescription).closest('p').html();
+			//data[i].forTease = forTease.replace(/<[^>]+>[^<]*<[^>]+>|<[^\/]+\/>/ig, "");
 			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
 			if ( data[i].recentBoolean ) {
 				recentCorpBlog ++;
@@ -57,16 +57,16 @@
 		setTwitterList( _dataTwitterFeed );
 	}
 
+	function topNavClickedBC( event ) {
+		bc.device.navigateToView("brightcove.html");
+	}
+
 	function topNavClickedVC( event ) {
 		bc.device.navigateToView("videocloud.html");
 	}
 
 	function topNavClickedAC( event ) {
 		bc.device.navigateToView("appcloud.html");
-	}
-
-	function topNavClickedZC( event ) {
-		bc.device.navigateToView("zencoder.html");
 	}
 
 	function showDetails( event, ui ) {

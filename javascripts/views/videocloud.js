@@ -30,6 +30,7 @@
     $( "#recent-videos-list" ).on( "tap", "li", injectRecentPageContent );
     $("body").on( "tap", ".mainNavTargetBC", topNavClickedBC);
     $("body").on( "tap", ".mainNavTargetAC", topNavClickedAC);
+    $("body").on( "tap", ".mainNavTargetZC", topNavClickedZC);
   }
 
   function topNavClickedBC( event ) {
@@ -38,6 +39,10 @@
 
   function topNavClickedAC( event ) {
     bc.device.navigateToView("appcloud.html");
+  }
+
+  function topNavClickedZC( event ) {
+    bc.device.navigateToView("zencoder.html");
   }
 
   function showDetails( event, ui ) {

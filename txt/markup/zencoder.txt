@@ -3,14 +3,14 @@
   {{bccorpblogitems}}
       <li {{if recentBoolean}}data-theme="b"{{/if}} data-guid="{{guid}}">
           <a href="#content-details" data-transition="slide"><h3>{{title}}</h3>
-          <p class="content-description">{{forTease|tease>15}}</p></a>
+          <p class="content-description">{{description|tease>15}}</p></a>
       </li>
   {{/bccorpblogitems}}
 </ul>
 
 ===== display-corpblog-tmpl
 <h1>{{selectedCorpBlog.title}}</h1>
-{{selectedCorpBlog.description}}
+{{selectedCorpBlog.content_encoded}}
 
 ===== display-twitter-tmpl
 <ul class="content-list" data-role="listview" data-inset="true">
@@ -21,6 +21,3 @@
       </li>
   {{/twitteritems}}
 </ul>
-
-===== display-twitteritem-tmpl
-<h1>{{selectedTwitter.text}}</h1>
