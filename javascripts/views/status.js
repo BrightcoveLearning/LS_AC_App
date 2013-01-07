@@ -64,26 +64,19 @@
     $('a[data-toggle="tab"]').on('shown', function (e) {
       var selectedRegion = $(e.target).html();
       switch ( selectedRegion ) {
-        case: "North America": {
-
+        case "North America":
+          console.log("in switch");
           break;
-        }
-
-        case: "EMEA": {
+        case "EMEA":
           populateEMEATable();
+          console.log("in switch");
           break;
-        }
-
-        case: "Japan": {
-
+        case "Japan":
+          console.log("in switch");
           break;
-        }
-
-        case: "APAC": {
-
+        case "APAC":
+          console.log("in switch");
           break;
-        }
-
       } //end switch
     }) // end on function
   } // end registerEventListeners
@@ -103,6 +96,14 @@
        { dataSource: "emeavcstudio", title: "Video Cloud - Studio" },
        { dataSource: "emeavidproc", title: "Video Processing" }
     ];
+    for (var i=0; i < _emeaServices.length; i++) {
+
+      var dataSourceName = _emeaServices[i].dataSource;
+
+      var myHandler = makeSuccessHandler(dataSourceName);
+
+      bc.core.getData(dataSourceName, myHandler, onGetDataError);
+    }
   }
 
 	function topNavClickedBC( event ) {

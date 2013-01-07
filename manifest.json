@@ -263,6 +263,114 @@
                     "sb_status":        { "type": "string" },
                     "sb_message":       { "type": "string" }
                 }
+              },
+              {
+                "name": "emeaacservice",
+                "contentFeed": "50eb0da0499a021ace00694b",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeaacstudio",
+                "contentFeed": "50eb0ed4499a021ad2007801",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeadissyn",
+                "contentFeed": "50eb11ad5f9cfa4c48006d9c",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emealivestream",
+                "contentFeed": "50eb183b499a021ace00e0dc",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeamars",
+                "contentFeed": "50eb18aa91954a46b700d261",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeapbak",
+                "contentFeed": "50eb1f60e2a6422bc9001d8c",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeapbbc",
+                "contentFeed": "50eb2156987d0351e800262f",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeapblime",
+                "contentFeed": "50eb228de6cd994e97003950",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeaanalytics",
+                "contentFeed": "50eb36085f9cfa1b650092b8",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeauploading",
+                "contentFeed": "50eb366de6cd990c2f009fe8",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeavcstudio",
+                "contentFeed": "50eb372f5f9cfa1b5f00acab",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "emeavidproc",
+                "contentFeed": "50eb37d0e6cd990ca500afc0",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
               }
             ]
         }
