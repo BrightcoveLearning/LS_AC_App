@@ -6,91 +6,79 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta name="bc-manifest" content="manifest.json" />
-		<title>App Cloud</title>
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-		<link type="text/css" rel="stylesheet" href="stylesheets/styles.css"/>
-		<script type="text/javascript" src="javascripts/lib/brightcove-app-cloud-1.12.min.js"></script>
-		<script type="text/javascript" src="javascripts/views/zencoder.js"></script>
-		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<title>Zencoder Info</title>
+ 	  <link href="stylesheets/brightcove-app-cloud-1.12.min.css" rel="stylesheet"/>
+		<link href="stylesheets/bootstrap.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+		</style>
+		<link href="stylesheets/bootstrap-responsive.css" rel="stylesheet">
 	</head>
 <body>
 
-<div id="twitter" data-role="page">
+<section id="pageone" class="page">
+  <header class="header">
+	 	<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="#">Brightcove App</a>
+					<div class="nav-collapse">
+						<ul class="nav bcmainnav">
+							<li id="mainNavTargetBC"><a ><i class="icon-home icon-white"></i> Brightcove</a></li>
+							<li id="mainNavTargetVC"><a>Video Cloud</a></li>
+							<li id="mainNavTargetAC"><a>App Cloud</a></li>
+							<li class="active" id="mainNavTargetZC"><a>Zencoder</a></li>
+							<li id="mainNavTargetS"><a>Status</a></li>
+						</ul>
+					</div><!-- /.nav-collapse -->
+				</div><!-- /.container -->
+			</div><!-- /.navbar-inner -->
+		</div><!-- /.navbar -->
+  </header>
 
-	<div id="nav-top">
-		<span data-role="controlgroup" data-type="horizontal">
-			<a rel="external" data-role="button" class="mainNavTargetBC"><img src="images/icons/logo-corporate.png" width="159" height="30"></a>
-			<a rel="external" data-role="button" class="mainNavTargetVC"><img src="images/icons/VideoCloud.png" width="218" height="30"></a>
-			<a rel="external" data-role="button" class="mainNavTargetAC"><img src="images/icons/AppCloud.png" width="184" height="30"></a>
-			<a data-role="button" class="nav-top-selected-product"><img src="images/icons/zencoder.png" width="173" height="30"></a>
-		</span>
+	<div class="scroller">
+		<div id="first-page-content" class="content">
+			<div class="row">
+				<div class="span3">
+					<div class="tabbable">
+						<ul class="nav nav-pills nav-stacked">
+							<li class="active" id="twitter"><a data-toggle="pill">Twitter feed <span class="badge badge-inverse badge4twitter"></span></a></li>
+							<li id="blog"><a data-toggle="pill">Corporate blog <span class="badge badge-inverse badge4blog"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="span9" id="first-page-details">
+
+				</div>
+			</div>
+		</div>
 	</div>
+</section>
 
-	<div data-role="content">
+  <!-- Second page -->
+  <section id="pagetwo" class="page">
+    <header class="header">
+      <div class="back-button"></div>
+    </header>
+    <div class="scroller">
+      <div id="second-page-content" class="content">
+        <!-- Your content for the second page goes here.  We will set this via the view1.js file. -->
+      </div>
+    </div>
+  </section>
 
-		<h1>Zencoder resources</h1>
-
-		<ul class="nav-left" data-role="listview" data-inset="true">
-			<li data-theme="a"><a href="#twitter">Twitter feed<span class="ui-li-count twitter"></span></a></li>
-			<li><a href="#corporate-blog">Corporate blog<span class="ui-li-count corpblog"></span></a></li>
-			</li>
-		</ul>
-
-		<section id="twitter-list">
-
-		</section>
-
-		<br/><br/><br/>
-	</div><!-- /twitter -->
-
-</div><!-- /page -->
-
-
-<div id="corporate-blog" data-role="page">
-
-	<div id="nav-top">
-		<span data-role="controlgroup" data-type="horizontal">
-			<a rel="external" data-role="button" class="mainNavTargetBC"><img src="images/icons/logo-corporate.png" width="159" height="30"></a>
-			<a rel="external" data-role="button" class="mainNavTargetVC"><img src="images/icons/VideoCloud.png" width="218" height="30"></a>
-			<a rel="external" data-role="button" class="mainNavTargetAC"><img src="images/icons/AppCloud.png" width="184" height="30"></a>
-			<a data-role="button" class="nav-top-selected-product"><img src="images/icons/zencoder.png" width="173" height="30"></a>
-		</span>
-	</div>
-
-	<div data-role="content">
-
-		<h1>Zencoder resources</h1>
-
-		<ul class="nav-left" data-role="listview" data-inset="true">
-			<li><a href="#twitter">Twitter feed<span class="ui-li-count twitter"></span></a></li>
-			<li data-theme="a"><a href="#corporate-blog">Corporate blog<span class="ui-li-count corpblog"></span></a></li>
-			</li>
-		</ul>
-
-		<section id="corporate-blog-list">
-
-		</section>
-
-		<br/><br/><br/>
-	</div><!-- /content -->
-</div><!-- / corporate blog page -->
-
-
-<div id="content-details" data-role="page">
-	<div id="nav-top">
-		<span data-role="controlgroup" data-type="horizontal">
-			<a data-rel="back" data-role="button" data-icon="arrow-l"><img src="images/icons/back_button.png" width="51" height="30"></a>
-			<a href="" data-role="button"><img src="images/icons/zencoder.png" width="173" height="30"></a>
-		</span>
-
-	</div>
-
-	<section id="drill-down-detail-page">
-
-	</section>
-
-</div> <!-- /endo content details-->
-
+	<!-- JavaScript libraries imported -->
+	<script type="text/javascript" src="javascripts/lib/brightcove-app-cloud-1.12.min.js"></script>
+	<script type="text/javascript" src="javascripts/views/zencoder.js"></script>
+	<script type="text/javascript" src="javascripts/lib/bootstrap.min.js"></script>
 
 </body>
 </html>

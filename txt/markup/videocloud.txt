@@ -1,9 +1,9 @@
 ===== display-update-item-tmpl
-<ul class="content-list" data-role="listview" data-inset="true">
+<ul>
   {{vcupdateitems}}
-      <li {{if recentBoolean}}data-theme="d"{{/if}} data-guid="{{guid}}">
-          <a href="#content-details" data-transition="slide"><h3>{{title}}</h3>
-          <p class="content-description">{{pubDate}}</p></a>
+      <li {{if recentBoolean}}  {{/if}} data-guid="{{guid}}" data-type="update">
+          <h3>{{title}}</h3>
+          <p class="content-description">{{pubDate}}</p>
       </li>
   {{/vcupdateitems}}
 </ul>
@@ -13,11 +13,11 @@ Release Date: {{selectedUpdate.releaseDate}}<br />
 {{selectedUpdate.docHTML}}<br />
 
 ===== display-recent-item-tmpl
-<ul class="content-list" data-role="listview" data-inset="true">
+<ul>
   {{vcrecentitems}}
-    <li {{if recentBoolean}}data-theme="d"{{/if}} data-guid="{{guid}}">
-      <a href="#content-details" data-transition="slide"><h3>{{title}}</h3>
-      <p class="content-description">{{displayDescription}}</p></a>
+    <li {{if recentBoolean}} {{/if}} data-guid="{{guid}}">
+      <h3>{{title}}</h3>
+      <p class="content-description">{{displayDescription}}</p>
     </li>
   {{/vcrecentitems}}
 </ul>

@@ -148,6 +148,123 @@
                 }
               }
             ]
+        },
+        {
+            "navigationTitle": "Status Page",
+            "navigationIcon": "images/icons/videocloud.png",
+            "uri": "status.html",
+            "locales": "./txt/locales/en.txt",
+            "markup": "./txt/markup/status.txt",
+            "data": [
+              {
+                "name": "naacservice",
+                "contentFeed": "50d0aa3a077b2877b800722a",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "naacstudio",
+                "contentFeed": "50d0ac012fa4024fab008020",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "nadissyn",
+                "contentFeed": "50e73c4c91954a058807396c",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "nalivestream",
+                "contentFeed": "50e73d735f9cfa192f029e12",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "namars",
+                "contentFeed": "50e73ee4e6cd9933e602f62c",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "napbak",
+                "contentFeed": "50e7404591954a714f026f28",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "napbbc",
+                "contentFeed": "50e740ba91954a3719035d1d",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "napblime",
+                "contentFeed": "50e7413691954a0588075b81",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "naanalytics",
+                "contentFeed": "50e7428fe2a6427ffd0778b9",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "nauploading",
+                "contentFeed": "50d0ce798a3fd238770049f4",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "navcstudio",
+                "contentFeed": "50e84ecb5f9cfa416d0da5b9",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "navidproc",
+                "contentFeed": "50e84f3c5f9cfa192f08852f",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              }
+            ]
         }
     ]
 }

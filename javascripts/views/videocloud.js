@@ -3,19 +3,17 @@
   $( bc ).bind( "init", initialize );
 
   var _dataUpdate = {};
-  var _dataRecent = {};
+  var _dataContent = {};
   var _dataVideos = {};
 
   var recentUpdates = 0;
   var recentContent = 0;
   var recentVideos = 0;
-  var detailsShowningGUID="";
+
+  var secondPageMode = "";
 
   function initialize() {
-    $.mobile.defaultPageTransition = 'none';
-    $.mobile.activeBtnClass = 'aNonExistentSelector';
-
-    bc.core.cache( "lastVisit", "2012-06-01T22:04:23.763Z" );
+    bc.core.cache( "lastVisit", "2012-11-01T22:04:23.763Z" );
 
     bc.core.getData("vcrecent", onGetRecentDataSuccess, onGetDataError);
     bc.core.getData("vcupdate", onGetUpdateDataSuccess, onGetDataError);
@@ -25,16 +23,24 @@
   }
 
   function registerEventListeners() {
-    $( "#product-updates-list" ).on( "tap", "li", injectUpdatePageContent );
-    $( "#recent-content-list" ).on( "tap", "li", injectRecentPageContent );
-    $( "#recent-videos-list" ).on( "tap", "li", injectRecentPageContent );
-    $("body").on( "tap", ".mainNavTargetBC", topNavClickedBC);
-    $("body").on( "tap", ".mainNavTargetAC", topNavClickedAC);
-    $("body").on( "tap", ".mainNavTargetZC", topNavClickedZC);
+    $( "#first-page-details" ).on( "tap", "li", injectSecondPageDetails );
+    $("body").on( "tap", "#mainNavTargetBC", topNavClickedBC);
+    $("body").on( "tap", "#mainNavTargetVC", topNavClickedVC);
+    $("body").on( "tap", "#mainNavTargetAC", topNavClickedAC);
+    $("body").on( "tap", "#mainNavTargetZC", topNavClickedZC);
+    $("body").on( "tap", "#mainNavTargetS", topNavClickedS);
+    $("body").on( "tap", "#updates", sideNavClickedUpdates);
+    $("body").on( "tap", "#content", sideNavClickedContent);
+    $("body").on( "tap", "#videos", sideNavClickedVideos);
+    $( "#pagetwo" ).on( "tap", ".back-button", bc.ui.backPage );
   }
 
   function topNavClickedBC( event ) {
     bc.device.navigateToView("brightcove.html");
+  }
+
+  function topNavClickedVC( event ) {
+    bc.device.navigateToView("videocloud.html");
   }
 
   function topNavClickedAC( event ) {
@@ -45,8 +51,36 @@
     bc.device.navigateToView("zencoder.html");
   }
 
-  function showDetails( event, ui ) {
-    console.log(ui);
+  function topNavClickedS( event ) {
+    bc.device.navigateToView("status.html");
+  }
+
+  function onGetDataError( error ) {
+    console.log(error);
+  }
+
+  function sideNavClickedUpdates( event ){
+    setUpdateList( _dataUpdate );
+  }
+
+  function sideNavClickedContent( event ){
+    secondPageMode = "content";
+    setContentList( _dataContent );
+  }
+
+  function sideNavClickedVideos( event ){
+    secondPageMode = "videos";
+    setVideosList( _dataVideos );
+  }
+
+  function injectSecondPageDetails( event ){
+    var type = $(this).data("type");
+    var guid = $(this).data("guid");
+    if (type == "update") {
+      injectUpdatePageContent( guid );
+    } else {
+      injectRecentPageContent( guid );
+    }
   }
 
   function onGetVideoDataSuccess( data ) {
@@ -68,8 +102,8 @@
         recentVideos ++;
       }
     }
+    $(".badge.badge-inverse.badge4videos").html( recentVideos );
     _dataVideos = data;
-    setVideosList( data );
   }
 
   function onGetUpdateDataSuccess( data ) {
@@ -124,8 +158,8 @@
         recentContent ++;
       }
     }
-    _dataRecent = data;
-    setRecentList( data );
+    $(".badge.badge-inverse.badge4content").html( recentContent );
+    _dataContent = data;
   }
 
   function onGetDataError( error ) {
@@ -133,7 +167,6 @@
   }
 
   function setVideosList( data ) {
-    $(".ui-li-count.videos").html( recentVideos );
 
     //The object we will pass to markup that will be used to generate the HTML.
     var context = { "vcrecentitems": data };
@@ -145,13 +178,11 @@
     var html = Mark.up( markupTemplate, context );
 
     //Set the HTML of the element.
-    $( "#recent-videos-list" ).append( html ).listview();
-    $( "#recent-videos-list" ).find("ul").listview();
+    $( "#first-page-details" ).html( html );
   }
 
   function setUpdateList( data ) {
-    $(".ui-li-count.updates").html( recentUpdates );
-
+    $(".badge.badge-inverse.badge4updates").html( recentUpdates );
     //The object we will pass to markup that will be used to generate the HTML.
     var context = { "vcupdateitems": data };
 
@@ -162,13 +193,10 @@
     var html = Mark.up( markupTemplate, context );
 
     //Set the HTML of the element.
-    $( "#product-updates-list" ).append( html ).listview();
-    $( "#product-updates-list" ).find("ul").listview();
+    $( "#first-page-details" ).html( html );
   }
 
-  function setRecentList( data ) {
-    $(".ui-li-count.content").html( recentContent );
-
+  function setContentList( data ) {
     //The object we will pass to markup that will be used to generate the HTML.
     var context = { "vcrecentitems": data };
 
@@ -179,27 +207,24 @@
     var html = Mark.up( markupTemplate, context );
 
     //Set the HTML of the element.
-    $( "#recent-content-list" ).append( html ).listview();
-    $( "#recent-content-list" ).find("ul").listview();
+    $( "#first-page-details" ).html( html );
   }
 
- function injectUpdatePageContent( evt ) {
-   var guid = $(this).data("guid");
-   var selectedItem = getUpdateItemByGUID(guid);
+  function injectUpdatePageContent( guidParam ) {
+   var selectedItem = getUpdateItemByGUID(guidParam);
    var context = { selectedUpdate: selectedItem };
    var markupTemplate = bc.templates["display-update-tmpl"];
    var html = Mark.up( markupTemplate, context );
 
-  selectedItem.recentBoolean = false;
-  recentUpdates --;
+   if ( selectedItem.recentBoolean ) recentUpdates --;
+   selectedItem.recentBoolean = false;
+   $(".badge.badge-inverse.badge4updates").html( recentUpdates );
+   $( "#second-page-content" ).html( html );
+   bc.ui.forwardPage( $( "#pagetwo" ) );
+  }
 
-   $( "#drill-down-detail-page" ).html( html );
- }
-
-  function injectRecentPageContent( evt ) {
-    var guid = $(this).data("guid");
-    detailsShowningGUID =  guid;
-    var selectedItem = getRecentItemByGUID(guid);
+  function injectRecentPageContent( guidParam ) {
+    var selectedItem = getRecentItemByGUID(guidParam);
 
     if (selectedItem.isVideo) {
       var context = { "videoID": selectedItem.videoID };
@@ -211,10 +236,18 @@
 
     var html = Mark.up( markupTemplate, context );
 
-    selectedItem.recentBoolean = false;
-    recentContent --;
+    if (secondPageMode == "content") {
+      if ( selectedItem.recentBoolean ) recentContent --;
+      $(".badge.badge-inverse.badge4content").html( recentContent );
+    } else {
+      if ( selectedItem.recentBoolean ) recentVideos --;
+      $(".badge.badge-inverse.badge4videos").html( recentVideos );
+    }
 
-    $( "#drill-down-detail-page" ).html( html );
+    selectedItem.recentBoolean = false;
+
+   $( "#second-page-content" ).html( html );
+   bc.ui.forwardPage( $( "#pagetwo" ) );
   }
 
   function getUpdateItemByGUID( localGUID ) {
@@ -227,10 +260,10 @@
   }
 
   function getRecentItemByGUID( localGUID ) {
-    var len=_dataRecent.length;
+    var len=_dataContent.length;
     for(var i=0;i<len;i++){
-      if(_dataRecent[i].guid == localGUID){
-        return _dataRecent[i];
+      if(_dataContent[i].guid == localGUID){
+        return _dataContent[i];
       }
     }
   }

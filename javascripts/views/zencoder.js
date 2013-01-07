@@ -9,9 +9,6 @@
 	var recentCorpBlog = 0;
 
 	function initialize() {
-		$.mobile.defaultPageTransition = 'none';
-		$.mobile.activeBtnClass = 'aNonExistentSelector';
-
 		bc.core.cache( "lastVisit", "2012-12-11T22:04:23.763Z" );
 
 		bc.device.fetchContentsOfURL("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=zencoderinc&include_rts=1",onGetTwitterSuccess, onGetDataError);
@@ -21,11 +18,47 @@
 	}
 
 	function registerEventListeners() {
-		$( "#corporate-blog-list" ).on( "tap", "li", injectCorpBlogContent );
-		$( "#twitter-list" ).on( "tap", "li", injectTwitterContent );
-		$("body").on( "tap", ".mainNavTargetBC", topNavClickedBC);
-		$("body").on( "tap", ".mainNavTargetAC", topNavClickedAC);
-		$("body").on( "tap", ".mainNavTargetVC", topNavClickedVC);
+		$( "#first-page-details" ).on( "tap", "li", injectCorpBlogContent );
+		$("body").on( "tap", "#mainNavTargetBC", topNavClickedBC);
+		$("body").on( "tap", "#mainNavTargetVC", topNavClickedVC);
+		$("body").on( "tap", "#mainNavTargetAC", topNavClickedAC);
+		$("body").on( "tap", "#mainNavTargetZC", topNavClickedZC);
+		$("body").on( "tap", "#mainNavTargetS", topNavClickedS);
+		$("body").on( "tap", "#blog", sideNavClickedBlog);
+		$("body").on( "tap", "#twitter", sideNavClickedTwitter);
+		$( "#pagetwo" ).on( "tap", ".back-button", bc.ui.backPage );
+	}
+
+	function topNavClickedBC( event ) {
+		bc.device.navigateToView("brightcove.html");
+	}
+
+	function topNavClickedVC( event ) {
+		bc.device.navigateToView("videocloud.html");
+	}
+
+	function topNavClickedAC( event ) {
+		bc.device.navigateToView("appcloud.html");
+	}
+
+	function topNavClickedZC( event ) {
+		bc.device.navigateToView("zencoder.html");
+	}
+
+	function topNavClickedS( event ) {
+		bc.device.navigateToView("status.html");
+	}
+
+	function onGetDataError( error ) {
+		console.log(error);
+	}
+
+	function sideNavClickedBlog( event ){
+		setCorpBlogList( _dataCorpBlog );
+	}
+
+	function sideNavClickedTwitter( event ){
+		setTwitterList( _dataTwitterFeed );
 	}
 
 	function onGetCorpBlogSuccess( data ){
@@ -57,26 +90,6 @@
 		setTwitterList( _dataTwitterFeed );
 	}
 
-	function topNavClickedBC( event ) {
-		bc.device.navigateToView("brightcove.html");
-	}
-
-	function topNavClickedVC( event ) {
-		bc.device.navigateToView("videocloud.html");
-	}
-
-	function topNavClickedAC( event ) {
-		bc.device.navigateToView("appcloud.html");
-	}
-
-	function showDetails( event, ui ) {
-		console.log(ui);
-	}
-
-	function onGetDataError( error ) {
-//console.log(error);
-	}
-
 	function setTwitterList( data ){
 		$(".ui-li-count.twitter").html( recentTwitter );
 
@@ -90,8 +103,8 @@
 		var html = Mark.up( markupTemplate, context );
 
 		//Set the HTML of the element.
-		$( "#twitter-list" ).append( html ).listview();
-		$( "#twitter-list" ).find("ul").listview();
+		$( "#twitter-list" ).append( html );
+		$( "#twitter-list" ).find("ul");
 	}
 
 	function setCorpBlogList ( data ){
@@ -107,8 +120,8 @@
 		var html = Mark.up( markupTemplate, context );
 
 		//Set the HTML of the element.
-		$( "#corporate-blog-list" ).append( html ).listview();
-		$( "#corporate-blog-list" ).find("ul").listview();
+		$( "#corporate-blog-list" ).append( html );
+		$( "#corporate-blog-list" ).find("ul");
 	}
 
 	function injectCorpBlogContent( evt ){
@@ -118,13 +131,9 @@
 		var markupTemplate = bc.templates["display-corpblog-tmpl"];
 		var html = Mark.up( markupTemplate, context );
 
+		if ( selectedItem.recentBoolean ) recentCorpBlog --;
 		selectedItem.recentBoolean = false;
 
-		$(this).removeAttr("data-theme");
-		$(this).attr("data-theme","c").removeClass("ui-btn-up-b").addClass("ui-btn-up-c");
-		$(this).trigger("enhance");
-
-		recentCorpBlog --;
 		$(".ui-li-count.corpblog").html( recentCorpBlog );
 
 		$( "#drill-down-detail-page" ).html( html );
@@ -134,13 +143,10 @@
 		var guid = $(this).data("guid");
 		var selectedItem = getTwitterItemByGUID(guid);
 
+
+		if ( selectedItem.recentBoolean ) recentTwitter --;
 		selectedItem.recentBoolean = false;
 
-		$(this).removeAttr("data-theme");
-		$(this).attr("data-theme","c").removeClass("ui-btn-up-b").addClass("ui-btn-up-c");
-		$(this).trigger("enhance");
-
-		recentTwitter --;
 		$(".ui-li-count.corpblog").html( recentTwitter );
 	}
 
