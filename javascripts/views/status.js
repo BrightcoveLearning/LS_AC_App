@@ -4,9 +4,7 @@
 
   function initialize() {
     bc.core.cache( "lastVisit", "2012-12-11T22:04:23.763Z" );
-
     registerEventListeners();
-
     populateNATable();
   }
 
@@ -22,11 +20,8 @@
 
   function setContentOfPage( services, selector ) {
     var context = { "services": services };
-
     var markupTemplate = bc.templates["table-rows-tmpl"];
-
     var html = Mark.up( markupTemplate, context );
-
     $( selector ).html( html );
   }
 
@@ -71,18 +66,12 @@
        { dataSource: "navcstudio", title: "Video Cloud - Studio" },
        { dataSource: "navidproc", title: "Video Processing" }
     ];
-
     setContentOfPage( naServices, "#natable" );
-
     for (var i=0; i < naServices.length; i++) {
-
       var dataSourceName = naServices[i].dataSource;
-
       var myHandler = makeSuccessHandler(dataSourceName);
-
       bc.core.getData(dataSourceName, myHandler, onGetDataError);
     }
-
   }
 
   function populateEMEATable( ) {
@@ -100,18 +89,12 @@
        { dataSource: "emeavcstudio", title: "Video Cloud - Studio" },
        { dataSource: "emeavidproc", title: "Video Processing" }
     ];
-
     setContentOfPage( emeaServices, "#emeatable" );
-
     for (var i=0; i < emeaServices.length; i++) {
-
       var dataSourceName = emeaServices[i].dataSource;
-
       var myHandler = makeSuccessHandler(dataSourceName);
-
       bc.core.getData(dataSourceName, myHandler, onGetDataError);
     }
-
   }
 
 	function topNavClickedBC( event ) {
