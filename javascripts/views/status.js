@@ -1,37 +1,13 @@
 ( function( $ ) {
 
-  var _naServices = [
-     { dataSource: "naacservice", title: "App Cloud - Service" },
-     { dataSource: "naacstudio", title: "App Cloud - Studio" },
-     { dataSource: "nadissyn", title: "Distribution/Syndication" },
-     { dataSource: "nalivestream", title: "Live Streaming" },
-     { dataSource: "namars", title: "Media API Read Service" },
-     { dataSource: "napbak", title: "Playback - Akamai" },
-     { dataSource: "napbbc", title: "Playback - Brightcove" },
-     { dataSource: "napblime", title: "Playback - Limelight" },
-     { dataSource: "naanalytics", title: "Reporting/Analytics" },
-     { dataSource: "nauploading", title: "Uploading" },
-     { dataSource: "navcstudio", title: "Video Cloud - Studio" },
-     { dataSource: "navidproc", title: "Video Processing" }
-  ];
+  $( bc ).bind( "init", initialize );
 
-	$( bc ).bind( "init", initialize );
+  function initialize() {
+    bc.core.cache( "lastVisit", "2012-12-11T22:04:23.763Z" );
 
-	function initialize() {
-		bc.core.cache( "lastVisit", "2012-12-11T22:04:23.763Z" );
+    registerEventListeners();
 
-		registerEventListeners();
-
-    setContentOfPage();
-
-    for (var i=0; i < _naServices.length; i++) {
-
-      var dataSourceName = _naServices[i].dataSource;
-
-      var myHandler = makeSuccessHandler(dataSourceName);
-
-      bc.core.getData(dataSourceName, myHandler, onGetDataError);
-    }
+    populateNATable();
   }
 
   function makeSuccessHandler( dataSourceName ) {
@@ -44,14 +20,14 @@
       };
   }
 
-  function setContentOfPage() {
-    var context = { "services": _naServices };
+  function setContentOfPage( services, selector ) {
+    var context = { "services": services };
 
     var markupTemplate = bc.templates["table-rows-tmpl"];
 
     var html = Mark.up( markupTemplate, context );
 
-    $( "#natable" ).html( html );
+    $( selector ).html( html );
   }
 
   function registerEventListeners() {
@@ -65,24 +41,52 @@
       var selectedRegion = $(e.target).html();
       switch ( selectedRegion ) {
         case "North America":
-          console.log("in switch");
+        populateNATable();
           break;
         case "EMEA":
           populateEMEATable();
-          console.log("in switch");
           break;
         case "Japan":
-          console.log("in switch");
+          populateJapanTable();
           break;
         case "APAC":
-          console.log("in switch");
+          populateAPACTable();
           break;
       } //end switch
     }) // end on function
   } // end registerEventListeners
 
-  function populateEMEATable ( ) {
-    var _emeaServices = [
+  function populateNATable( ) {
+    var naServices = [
+       { dataSource: "naacservice", title: "App Cloud - Service" },
+       { dataSource: "naacstudio", title: "App Cloud - Studio" },
+       { dataSource: "nadissyn", title: "Distribution/Syndication" },
+       { dataSource: "nalivestream", title: "Live Streaming" },
+       { dataSource: "namars", title: "Media API Read Service" },
+       { dataSource: "napbak", title: "Playback - Akamai" },
+       { dataSource: "napbbc", title: "Playback - Brightcove" },
+       { dataSource: "napblime", title: "Playback - Limelight" },
+       { dataSource: "naanalytics", title: "Reporting/Analytics" },
+       { dataSource: "nauploading", title: "Uploading" },
+       { dataSource: "navcstudio", title: "Video Cloud - Studio" },
+       { dataSource: "navidproc", title: "Video Processing" }
+    ];
+
+    setContentOfPage( naServices, "#natable" );
+
+    for (var i=0; i < naServices.length; i++) {
+
+      var dataSourceName = naServices[i].dataSource;
+
+      var myHandler = makeSuccessHandler(dataSourceName);
+
+      bc.core.getData(dataSourceName, myHandler, onGetDataError);
+    }
+
+  }
+
+  function populateEMEATable( ) {
+    var emeaServices = [
        { dataSource: "emeaacservice", title: "App Cloud - Service" },
        { dataSource: "emeaacstudio", title: "App Cloud - Studio" },
        { dataSource: "emeadissyn", title: "Distribution/Syndication" },
@@ -96,14 +100,18 @@
        { dataSource: "emeavcstudio", title: "Video Cloud - Studio" },
        { dataSource: "emeavidproc", title: "Video Processing" }
     ];
-    for (var i=0; i < _emeaServices.length; i++) {
 
-      var dataSourceName = _emeaServices[i].dataSource;
+    setContentOfPage( emeaServices, "#emeatable" );
+
+    for (var i=0; i < emeaServices.length; i++) {
+
+      var dataSourceName = emeaServices[i].dataSource;
 
       var myHandler = makeSuccessHandler(dataSourceName);
 
       bc.core.getData(dataSourceName, myHandler, onGetDataError);
     }
+
   }
 
 	function topNavClickedBC( event ) {
