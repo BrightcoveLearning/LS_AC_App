@@ -1,7 +1,7 @@
 ===== display-blog-tmpl
 <ul>
   {{bccorpblogitems}}
-      <li {{if recentBoolean}} {{/if}} data-guid="{{guid}}" data-type="blog">
+      <li {{if recentBoolean}}class="unread"{{/if}} data-guid="{{guid}}" data-type="blog">
           <h4>{{title}}</h4>
           <p>{{forTease|tease>15}}</p>
       </li>

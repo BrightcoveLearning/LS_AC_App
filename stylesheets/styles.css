@@ -27,6 +27,13 @@ h2 {
 	left: 25px;
 }
 
+.header {
+	height: 60px;
+}
+
+.unread {
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 59%,  from(#FFFFFF), to(#C0D53C));
+}
 
 /*This is jQuery Mobile and no longer in the current app */
 #nav-top {
