@@ -1,33 +1,12 @@
-.content ul {
-  list-style-type: none;
+.nav-pills > .active > a {
+  background-color: #EBB537
 }
 
-.content ul li {
-  padding: 0px 20px;
-  position: relative;
-  height: 50px;
-  line-height: 50px;
-  border-bottom: #3b3b3b solid 1px;
-  background-color: #fff;
+.nav-pills > .active > a:hover {
+  background-color: #EBB537
 }
 
-.content ul li:active {
-  background-color: #336699;
-  color: #fff;
+.unread {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 59%,  from(#FFFFFF), to(#C0D53C));
 }
 
-.content ul li .arrow {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  margin-top: -6px;
-}
-
-#second-page-content {
-  padding: 20px;
-  background-color: #fff;
-}
-
-#second-page-content h2 {
-  margin-bottom: 20px;
-}

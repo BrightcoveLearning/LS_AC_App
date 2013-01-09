@@ -31,10 +31,6 @@ h2 {
 	height: 60px;
 }
 
-.unread {
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 59%,  from(#FFFFFF), to(#C0D53C));
-}
-
 /*This is jQuery Mobile and no longer in the current app */
 #nav-top {
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#e1e1e1));
