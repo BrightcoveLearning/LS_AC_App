@@ -3,7 +3,7 @@
   {{bccorpblogitems}}
       <li {{if recentBoolean}} {{/if}} data-guid="{{guid}}" data-type="blog">
           <h4>{{title}}</h4>
-          <p class="content-description">{{forTease|tease>15}}</p>
+          <p>{{forTease|tease>15}}</p>
       </li>
   {{/bccorpblogitems}}
 </ul>
@@ -17,7 +17,7 @@
   {{twitteritems}}
       <li {{if recentBoolean}} {{/if}}>
           {{text}}<br /><br />
-          <p class="content-description">{{created_at}}</p>
+          <p>{{created_at}}</p>
       </li>
   {{/twitteritems}}
 </ul>

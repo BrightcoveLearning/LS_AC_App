@@ -3,25 +3,6 @@ body {
 	background-color:#FFF;
 }
 
-#nav-top {
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#e1e1e1));
-	width: 100%;
-	padding: 10px 0px 10px 25px;
-	position: relative;
-	min-width: 700px;
-	/* box-shadow: 5px 5px 5px #CCC; */
-}
-
-.nav-top-selected-product {
-	background: #e1e1e1;
-}
-
-#logo-corporate {
-	position:absolute;
-	top: 10px;
-	right: 50px;
-}
-
 h1 {
 	font-size: 20px;
 	font-weight: normal;
@@ -38,6 +19,38 @@ h2 {
 	position: absolute;
 }
 
+#back-button {
+	padding: 0px;
+	margin: 0px;
+	position: absolute;
+	top: 90px;
+	left: 25px;
+}
+
+
+/*This is jQuery Mobile and no longer in the current app */
+#nav-top {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#e1e1e1));
+	width: 100%;
+	padding: 10px 0px 10px 25px;
+	position: relative;
+	min-width: 700px;
+	/* box-shadow: 5px 5px 5px #CCC; */
+}
+
+/*This is jQuery Mobile and no longer in the current app */
+.nav-top-selected-product {
+	background: #e1e1e1;
+}
+
+/*This is jQuery Mobile and no longer in the current app */
+#logo-corporate {
+	position:absolute;
+	top: 10px;
+	right: 50px;
+}
+
+/*This is jQuery Mobile and no longer in the current app */
 .nav-left {
 	/*background-color: #F00;
 	background-color: #FFF;
@@ -51,6 +64,7 @@ h2 {
 	width: 280px;
 	}
 
+/*This is jQuery Mobile and no longer in the current app */
 .content-list {
 	padding: 0px;
 	position: absolute;
@@ -60,23 +74,18 @@ h2 {
 	min-width: 320px;
 }
 
+/*This is jQuery Mobile and no longer in the current app */
 .content-description.ui-li-desc {
 	white-space: normal;
 }
 
+/*This is jQuery Mobile and no longer in the current app */
 .subnav {
 	padding-left: 20px;
 	font-weight: normal;
 }
 
-#back-button {
-	padding: 0px;
-	margin: 0px;
-	position: absolute;
-	top: 90px;
-	left: 25px;
-}
-
+/*This is jQuery Mobile and no longer in the current app */
 .nav-left-selected {
 	background-color: #C0C;
 }

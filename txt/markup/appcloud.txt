@@ -3,7 +3,7 @@
   {{acupdateitems}}
       <li {{if recentBoolean}} {{/if}} data-guid="{{guid}}" data-type="update">
           <h3>{{title}}</h3>
-          <p class="content-description">{{pubDate}}</p>
+          <p>{{pubDate}}</p>
       </li>
   {{/acupdateitems}}
 </ul>
@@ -17,7 +17,7 @@ Release Date: {{selectedUpdate.releaseDate}}<br />
 	{{acrecentitems}}
 		<li {{if recentBoolean}} {{/if}} data-guid="{{guid}}">
 			<h3>{{title}}</h3>
-			<p class="content-description">{{displayDescription}}</p>
+			<p>{{displayDescription}}</p>
 		</li>
 	{{/acrecentitems}}
 </ul>
