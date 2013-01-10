@@ -7,6 +7,6 @@
 }
 
 .unread {
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 59%,  from(#FFFFFF), to(#888888));
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 75%,  from(#FFFFFF), to(#888888));
 }
 

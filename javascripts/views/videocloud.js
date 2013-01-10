@@ -77,9 +77,9 @@
     var type = $(this).data("type");
     var guid = $(this).data("guid");
     if (type == "update") {
-      injectUpdatePageContent( guid );
+      injectUpdatePageContent( guid, $(this) );
     } else {
-      injectRecentPageContent( guid );
+      injectRecentPageContent( guid, $(this) );
     }
   }
 
@@ -210,7 +210,7 @@
     $( "#first-page-details" ).html( html );
   }
 
-  function injectUpdatePageContent( guidParam ) {
+  function injectUpdatePageContent( guidParam, liTapped ) {
    var selectedItem = getUpdateItemByGUID(guidParam);
    var context = { selectedUpdate: selectedItem };
    var markupTemplate = bc.templates["display-update-tmpl"];
@@ -218,7 +218,7 @@
 
    if ( selectedItem.recentBoolean ) {
     recentUpdates --;
-    $(this).removeClass("unread");
+    liTapped.removeClass("unread");
     selectedItem.recentBoolean = false;
    }
    $(".badge.badge-inverse.badge4updates").html( recentUpdates );
@@ -226,7 +226,7 @@
    bc.ui.forwardPage( $( "#pagetwo" ) );
   }
 
-  function injectRecentPageContent( guidParam ) {
+  function injectRecentPageContent( guidParam, liTapped ) {
     var selectedItem = getRecentItemByGUID(guidParam);
 
     if (selectedItem.isVideo) {
@@ -242,14 +242,14 @@
     if (secondPageMode == "content") {
       if ( selectedItem.recentBoolean ) {
         recentContent --;
-        $(this).removeClass("unread");
+        liTapped.removeClass("unread");
         selectedItem.recentBoolean = false;
       }
       $(".badge.badge-inverse.badge4content").html( recentContent );
     } else {
       if ( selectedItem.recentBoolean ) {
         recentVideos --;
-        $(this).removeClass("unread");
+        liTapped.removeClass("unread");
         selectedItem.recentBoolean = false;
       }
       $(".badge.badge-inverse.badge4videos").html( recentVideos );

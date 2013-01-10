@@ -64,16 +64,15 @@
 	function onGetCorpBlogSuccess( data ){
 		for (var i = 0; i < data.length; i++) {
 			var thisItem = data[i];
-			//var fullDescription = thisItem.description;
-			//var forTease = $(fullDescription).closest('p').html();
-			//data[i].forTease = forTease.replace(/<[^>]+>[^<]*<[^>]+>|<[^\/]+\/>/ig, "");
+			var fullDescription = thisItem.description;
+			data[i].forTease = fullDescription;
 			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
 			if ( data[i].recentBoolean ) {
 				recentCorpBlog ++;
 			}
 		}
 		_dataCorpBlog = data;
-		setCorpBlogList( data );
+		$(".badge.badge-inverse.badge4blog").html( recentCorpBlog );
 	}
 
 	function onGetTwitterSuccess( data ){
@@ -87,6 +86,7 @@
 			}
 		}
 		_dataTwitterFeed = localData;
+		$(".badge.badge-inverse.badge4twitter").html( recentTwitter );
 		setTwitterList( _dataTwitterFeed );
 	}
 
@@ -103,8 +103,7 @@
 		var html = Mark.up( markupTemplate, context );
 
 		//Set the HTML of the element.
-		$( "#twitter-list" ).append( html );
-		$( "#twitter-list" ).find("ul");
+		$( "#first-page-details" ).html( html );
 	}
 
 	function setCorpBlogList ( data ){
@@ -120,8 +119,7 @@
 		var html = Mark.up( markupTemplate, context );
 
 		//Set the HTML of the element.
-		$( "#corporate-blog-list" ).append( html );
-		$( "#corporate-blog-list" ).find("ul");
+		$( "#first-page-details" ).html( html );
 	}
 
 	function injectCorpBlogContent( evt ){
@@ -136,24 +134,23 @@
 			$(this).removeClass("unread");
 			selectedItem.recentBoolean = false;
 		}
+		$(".badge.badge-inverse.badge4blog").html( recentCorpBlog );
 
-		$(".ui-li-count.corpblog").html( recentCorpBlog );
+		$( "#second-page-content" ).html( html );
 
-		$( "#drill-down-detail-page" ).html( html );
+		bc.ui.forwardPage( $( "#pagetwo" ) );
 	}
 
 	function injectTwitterContent( evt ){
 		var guid = $(this).data("guid");
 		var selectedItem = getTwitterItemByGUID(guid);
 
-
 		if ( selectedItem.recentBoolean ) {
 			recentTwitter --;
 			$(this).removeClass("unread");
 			selectedItem.recentBoolean = false;
 		}
-
-		$(".ui-li-count.corpblog").html( recentTwitter );
+		$(".badge.badge-inverse.badge4twitter").html( recentTwitter );
 	}
 
 	function getTwitterItemByGUID( localGUID ) {

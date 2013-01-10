@@ -125,24 +125,22 @@
 	}
 
 	function injectCorpBlogContent( evt ){
-		if ( $(this).data("type") == "blog" ){
-			var guid = $(this).data("guid");
-			var selectedItem = getCorpBlogItemByGUID(guid);
-			var context = { selectedCorpBlog: selectedItem };
-			var markupTemplate = bc.templates["display-corpblog-tmpl"];
-			var html = Mark.up( markupTemplate, context );
+		var guid = $(this).data("guid");
+		var selectedItem = getCorpBlogItemByGUID(guid);
+		var context = { selectedCorpBlog: selectedItem };
+		var markupTemplate = bc.templates["display-corpblog-tmpl"];
+		var html = Mark.up( markupTemplate, context );
 
-			if ( selectedItem.recentBoolean ) {
-				recentCorpBlog --;
-				$(this).removeClass("unread");
-				selectedItem.recentBoolean = false;
-			}
-			$(".badge.badge-inverse.badge4blog").html( recentCorpBlog );
-
-			$( "#second-page-content" ).html( html );
-
-			bc.ui.forwardPage( $( "#pagetwo" ) );
+		if ( selectedItem.recentBoolean ) {
+			recentCorpBlog --;
+			$(this).removeClass("unread");
+			selectedItem.recentBoolean = false;
 		}
+		$(".badge.badge-inverse.badge4blog").html( recentCorpBlog );
+
+		$( "#second-page-content" ).html( html );
+
+		bc.ui.forwardPage( $( "#pagetwo" ) );
 	}
 
 	function injectTwitterContent( evt ){
