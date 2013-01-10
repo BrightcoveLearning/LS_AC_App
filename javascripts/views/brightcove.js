@@ -132,8 +132,11 @@
 			var markupTemplate = bc.templates["display-corpblog-tmpl"];
 			var html = Mark.up( markupTemplate, context );
 
-			if ( selectedItem.recentBoolean ) recentCorpBlog --;
-			selectedItem.recentBoolean = false;
+			if ( selectedItem.recentBoolean ) {
+				recentCorpBlog --;
+				$(this).removeClass("unread");
+				selectedItem.recentBoolean = false;
+			}
 			$(".badge.badge-inverse.badge4blog").html( recentCorpBlog );
 
 			$( "#second-page-content" ).html( html );
@@ -146,9 +149,11 @@
 		var guid = $(this).data("guid");
 		var selectedItem = getTwitterItemByGUID(guid);
 
-		if ( selectedItem.recentBoolean ) recentTwitter --;
-		selectedItem.recentBoolean = false;
-
+		if ( selectedItem.recentBoolean ) {
+			recentTwitter --;
+			$(this).removeClass("unread");
+			selectedItem.recentBoolean = false;
+		}
 		$(".badge.badge-inverse.badge4twitter").html( recentTwitter );
 	}
 

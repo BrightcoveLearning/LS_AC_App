@@ -216,8 +216,11 @@
    var markupTemplate = bc.templates["display-update-tmpl"];
    var html = Mark.up( markupTemplate, context );
 
-   if ( selectedItem.recentBoolean ) recentUpdates --;
-   selectedItem.recentBoolean = false;
+   if ( selectedItem.recentBoolean ) {
+    recentUpdates --;
+    $(this).removeClass("unread");
+    selectedItem.recentBoolean = false;
+   }
    $(".badge.badge-inverse.badge4updates").html( recentUpdates );
    $( "#second-page-content" ).html( html );
    bc.ui.forwardPage( $( "#pagetwo" ) );
@@ -237,15 +240,20 @@
     var html = Mark.up( markupTemplate, context );
 
     if (secondPageMode == "content") {
-      if ( selectedItem.recentBoolean ) recentContent --;
+      if ( selectedItem.recentBoolean ) {
+        recentContent --;
+        $(this).removeClass("unread");
+        selectedItem.recentBoolean = false;
+      }
       $(".badge.badge-inverse.badge4content").html( recentContent );
     } else {
-      if ( selectedItem.recentBoolean ) recentVideos --;
+      if ( selectedItem.recentBoolean ) {
+        recentVideos --;
+        $(this).removeClass("unread");
+        selectedItem.recentBoolean = false;
+      }
       $(".badge.badge-inverse.badge4videos").html( recentVideos );
     }
-
-    selectedItem.recentBoolean = false;
-
    $( "#second-page-content" ).html( html );
    bc.ui.forwardPage( $( "#pagetwo" ) );
   }

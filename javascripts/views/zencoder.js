@@ -131,8 +131,11 @@
 		var markupTemplate = bc.templates["display-corpblog-tmpl"];
 		var html = Mark.up( markupTemplate, context );
 
-		if ( selectedItem.recentBoolean ) recentCorpBlog --;
-		selectedItem.recentBoolean = false;
+		if ( selectedItem.recentBoolean ) {
+			recentCorpBlog --;
+			$(this).removeClass("unread");
+			selectedItem.recentBoolean = false;
+		}
 
 		$(".ui-li-count.corpblog").html( recentCorpBlog );
 
@@ -144,8 +147,11 @@
 		var selectedItem = getTwitterItemByGUID(guid);
 
 
-		if ( selectedItem.recentBoolean ) recentTwitter --;
-		selectedItem.recentBoolean = false;
+		if ( selectedItem.recentBoolean ) {
+			recentTwitter --;
+			$(this).removeClass("unread");
+			selectedItem.recentBoolean = false;
+		}
 
 		$(".ui-li-count.corpblog").html( recentTwitter );
 	}
