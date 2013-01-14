@@ -1,8 +1,8 @@
 ===== display-blog-tmpl
 <ul>
   {{bccorpblogitems}}
-      <li {{if recentBoolean}}class="liDetail unread"{{else}}class="liDetail"{{/if}} data-guid="{{guid}}" data-type="blog">
-          <h4>{{title}}</h4>
+      <li {{if recentBoolean}}class="liDetail unread"{{else}}class="liDetail"{{/if}} data-guid="{{guid}}">
+          <h3>{{title}}</h3>
           <p>{{forTease|tease>15}}</p>
       </li>
   {{/bccorpblogitems}}

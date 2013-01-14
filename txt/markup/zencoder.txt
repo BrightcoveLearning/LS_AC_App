@@ -2,8 +2,8 @@
 <ul>
   {{bccorpblogitems}}
       <li {{if recentBoolean}}class="liDetail unread"{{else}}class="liDetail"{{/if}} data-guid="{{guid}}">
-          <a href="#content-details"><h3>{{title}}</h3>
-          <p>{{description|tease>15}}</p></a>
+          <h3>{{title}}</h3>
+          <p>{{description|tease>15}}</p>
       </li>
   {{/bccorpblogitems}}
 </ul>
