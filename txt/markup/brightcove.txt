@@ -3,7 +3,7 @@
   {{bccorpblogitems}}
       <li {{if recentBoolean}}class="liDetail unread"{{else}}class="liDetail"{{/if}} data-guid="{{guid}}">
           <h3>{{title}}</h3>
-          <p>{{forTease|tease>15}}</p>
+          <p>{{forTease|tease>12}}</p>
       </li>
   {{/bccorpblogitems}}
 </ul>

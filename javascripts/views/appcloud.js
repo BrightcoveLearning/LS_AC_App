@@ -60,15 +60,19 @@
   }
 
   function sideNavClickedUpdates( event ){
+    console.log( this );
+    $(this).addClass("active").siblings().removeClass("active");
     setUpdateList( _dataUpdate );
   }
 
   function sideNavClickedContent( event ){
+    $(this).addClass("active").siblings().removeClass("active");
     secondPageMode = "content";
     setContentList( _dataContent );
   }
 
   function sideNavClickedVideos( event ){
+    $(this).addClass("active").siblings().removeClass("active");
     secondPageMode = "videos";
     setVideosList( _dataVideos );
   }

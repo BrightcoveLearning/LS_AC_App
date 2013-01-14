@@ -9,7 +9,7 @@
 	var recentCorpBlog = 0;
 
 	function initialize() {
-		bc.core.cache( "lastVisit", "2012-12-11T22:04:23.763Z" );
+		bc.core.cache( "lastVisit", "2012-10-01T22:04:23.763Z" );
 
 		bc.device.fetchContentsOfURL("http://api.twitter.com/1/statuses/user_timeline.json?screen_name=zencoderinc&include_rts=1",onGetTwitterSuccess, onGetDataError);
 		bc.core.getData("zcblog", onGetCorpBlogSuccess, onGetDataError);
@@ -54,10 +54,12 @@
 	}
 
 	function sideNavClickedBlog( event ){
+    $(this).addClass("active").siblings().removeClass("active");
 		setCorpBlogList( _dataCorpBlog );
 	}
 
 	function sideNavClickedTwitter( event ){
+    $(this).addClass("active").siblings().removeClass("active");
 		setTwitterList( _dataTwitterFeed );
 	}
 

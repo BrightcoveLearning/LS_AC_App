@@ -54,10 +54,12 @@
 	}
 
 	function sideNavClickedBlog( event ){
+    $(this).addClass("active").siblings().removeClass("active");
 		setCorpBlogList( _dataCorpBlog );
 	}
 
 	function sideNavClickedTwitter( event ){
+    $(this).addClass("active").siblings().removeClass("active");
 		setTwitterList( _dataTwitterFeed );
 	}
 
