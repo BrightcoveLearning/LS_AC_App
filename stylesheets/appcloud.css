@@ -1,12 +1,11 @@
 .nav-pills > .active > a {
-  background-color: #C0D53C
+  background-color: #b8cc3a;
 }
 
 .nav-pills > .active > a:hover {
-  background-color: #C0D53C
+  background-color: #b8cc3a;
 }
 
 .unread {
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 75%,  from(#FFFFFF), to(#C0D53C));
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 80%,  from(#d1dc35), to(#9fbc3f));
 }
-

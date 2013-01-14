@@ -28,7 +28,6 @@ Release Date: {{selectedUpdate.releaseDate}}<br />
 
 ===== play-video-tmpl
 <!-- player publishing code -->
-<script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
 <object id="myExperience1968740782001" class="BrightcoveExperience">
   <param name="bgcolor" value="#FFFFFF" />
   <param name="width" value="480" />
