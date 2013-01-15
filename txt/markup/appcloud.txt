@@ -3,7 +3,7 @@
   {{acupdateitems}}
       <li {{if recentBoolean}}class="liDetail unread"{{else}}class="liDetail"{{/if}} data-guid="{{guid}}" data-type="update">
           <h3>{{title}}</h3>
-          <p>{{pubDate}}</p>
+          <p>{{pubDate|moment>M/D/YYYY}}</p>
       </li>
   {{/acupdateitems}}
 </ul>
