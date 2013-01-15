@@ -3,22 +3,6 @@ body {
 	background-color:#FFF;
 }
 
-h1 {
-	font-size: 20px;
-	font-weight: normal;
-	padding: 0px;
-	margin: 0px 0px 0px 15px;
-	position: absolute;
-}
-
-h2 {
-	font-size: 18px;
-	font-weight: normal;
-	padding: 0px;
-	margin: 20px 0px 0px 15px;
-	position: absolute;
-}
-
 #back-button {
 	padding: 0px;
 	margin: 0px;
@@ -52,8 +36,8 @@ margin: 2px 2px 0 0;
 line-height: none;
 }
 
-.nav-pills > .active, 
-.nav-pills > .active > a, 
+.nav-pills > .active,
+.nav-pills > .active > a,
 .nav-pills > .active > a:hover {
 color: #ffffff;
 }

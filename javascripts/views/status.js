@@ -97,6 +97,52 @@
     }
   }
 
+  function populateJapanTable( ) {
+    var jpServices = [
+       { dataSource: "jpacservice", title: "App Cloud - Service" },
+       { dataSource: "jpacstudio", title: "App Cloud - Studio" },
+       { dataSource: "jpdissyn", title: "Distribution/Syndication" },
+       { dataSource: "jplivestream", title: "Live Streaming" },
+       { dataSource: "jpmars", title: "Media API Read Service" },
+       { dataSource: "jppbak", title: "Playback - Akamai" },
+       { dataSource: "jppbbc", title: "Playback - Brightcove" },
+       { dataSource: "jppblime", title: "Playback - Limelight" },
+       { dataSource: "jpanalytics", title: "Reporting/Analytics" },
+       { dataSource: "jpuploading", title: "Uploading" },
+       { dataSource: "jpvcstudio", title: "Video Cloud - Studio" },
+       { dataSource: "jpvidproc", title: "Video Processing" }
+    ];
+    setContentOfPage( jpServices, "#japantable" );
+    for (var i=0; i < jpServices.length; i++) {
+      var dataSourceName = jpServices[i].dataSource;
+      var myHandler = makeSuccessHandler(dataSourceName);
+      bc.core.getData(dataSourceName, myHandler, onGetDataError);
+    }
+  }
+
+  function populateAPACTable( ) {
+    var apacServices = [
+       { dataSource: "apacacservice", title: "App Cloud - Service" },
+       { dataSource: "apacacstudio", title: "App Cloud - Studio" },
+       { dataSource: "apacdissyn", title: "Distribution/Syndication" },
+       { dataSource: "apaclivestream", title: "Live Streaming" },
+       { dataSource: "apacmars", title: "Media API Read Service" },
+       { dataSource: "apacpbak", title: "Playback - Akamai" },
+       { dataSource: "apacpbbc", title: "Playback - Brightcove" },
+       { dataSource: "apacpblime", title: "Playback - Limelight" },
+       { dataSource: "apacanalytics", title: "Reporting/Analytics" },
+       { dataSource: "apacuploading", title: "Uploading" },
+       { dataSource: "apacvcstudio", title: "Video Cloud - Studio" },
+       { dataSource: "apacvidproc", title: "Video Processing" }
+    ];
+    setContentOfPage( apacServices, "#apactable" );
+    for (var i=0; i < apacServices.length; i++) {
+      var dataSourceName = apacServices[i].dataSource;
+      var myHandler = makeSuccessHandler(dataSourceName);
+      bc.core.getData(dataSourceName, myHandler, onGetDataError);
+    }
+  }
+
 	function topNavClickedBC( event ) {
 		bc.device.navigateToView("brightcove.html");
 	}

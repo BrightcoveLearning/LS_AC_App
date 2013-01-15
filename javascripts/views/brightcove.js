@@ -67,6 +67,8 @@
 		for (var i = 0; i < data.length; i++) {
 			var thisItem = data[i];
 			var fullDescription = thisItem.description;
+			fullDescription = fullDescription.replace('<div class="field-label">Image:&nbsp;</div>','');
+			data[i].description = fullDescription;
 			var forTease = $(fullDescription).closest('p').html();
 			data[i].forTease = forTease.replace(/<[^>]+>[^<]*<[^>]+>|<[^\/]+\/>/ig, "");
 			data[i].recentBoolean = checkForRecent( thisItem.pubDate );

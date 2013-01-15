@@ -60,7 +60,6 @@
   }
 
   function sideNavClickedUpdates( event ){
-    console.log( this );
     $(this).addClass("active").siblings().removeClass("active");
     setUpdateList( _dataUpdate );
   }

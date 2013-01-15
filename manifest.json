@@ -371,6 +371,222 @@
                     "sb_status":        { "type": "string" },
                     "sb_message":       { "type": "string" }
                 }
+              },
+              {
+                "name": "jpacservice",
+                "contentFeed": "50eb0da0499a021ace00694b",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jpacstudio",
+                "contentFeed": "50eb0ed4499a021ad2007801",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jpdissyn",
+                "contentFeed": "50eb11ad5f9cfa4c48006d9c",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jplivestream",
+                "contentFeed": "50eb183b499a021ace00e0dc",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jpmars",
+                "contentFeed": "50eb18aa91954a46b700d261",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jppbak",
+                "contentFeed": "50eb1f60e2a6422bc9001d8c",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jppbbc",
+                "contentFeed": "50eb2156987d0351e800262f",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jppblime",
+                "contentFeed": "50eb228de6cd994e97003950",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jpanalytics",
+                "contentFeed": "50eb36085f9cfa1b650092b8",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jpuploading",
+                "contentFeed": "50eb366de6cd990c2f009fe8",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jpvcstudio",
+                "contentFeed": "50f4545e499a02523c00fa8d",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "jpvidproc",
+                "contentFeed": "50f454bc987d03164006ec6e",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacacservice",
+                "contentFeed": "50eb0da0499a021ace00694b",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacacstudio",
+                "contentFeed": "50f455825f9cfa3c450121d3",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacdissyn",
+                "contentFeed": "50f4560be6cd99531d102b08",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apaclivestream",
+                "contentFeed": "50f45667499a022be50db2bc",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacmars",
+                "contentFeed": "50f456e1499a02523c010c25",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacpbak",
+                "contentFeed": "50f4573b499a02448c0d1987",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacpbbc",
+                "contentFeed": "50f4579591954a33600185f4",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacpblime",
+                "contentFeed": "50f457fa499a02602900fb4a",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacanalytics",
+                "contentFeed": "50f4585c499a02602900ff33",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacuploading",
+                "contentFeed": "50f458a1e6cd99354e00c3d8",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacvcstudio",
+                "contentFeed": "50f458e4e6cd99354e00c696",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
+              },
+              {
+                "name": "apacvidproc",
+                "contentFeed": "50f45997987d03256b05207b",
+                "type": "feed",
+                "items": {
+                    "sb_status":        { "type": "string" },
+                    "sb_message":       { "type": "string" }
+                }
               }
             ]
         }

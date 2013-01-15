@@ -65,8 +65,8 @@
   }
 
   function sideNavClickedContent( event ){
-     $(this).addClass("active").siblings().removeClass("active");
-   secondPageMode = "content";
+    $(this).addClass("active").siblings().removeClass("active");
+    secondPageMode = "content";
     setContentList( _dataContent );
   }
 
