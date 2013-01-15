@@ -169,7 +169,8 @@
 
   function returnIconName ( status ){
   	switch ( status ) {
-  		case "Up": return "check";
+      case "Up": return "check";
+      case "Announcement": return "check";
   		case "Info": return "info";
   		case "Warning": return "warning";
   		case "Down": return "error";

@@ -374,7 +374,7 @@
               },
               {
                 "name": "jpacservice",
-                "contentFeed": "50eb0da0499a021ace00694b",
+                "contentFeed": "50f44da5499a0264e90abee6",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -383,7 +383,7 @@
               },
               {
                 "name": "jpacstudio",
-                "contentFeed": "50eb0ed4499a021ad2007801",
+                "contentFeed": "50f44e3e91954a24bc01e08e",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -392,7 +392,7 @@
               },
               {
                 "name": "jpdissyn",
-                "contentFeed": "50eb11ad5f9cfa4c48006d9c",
+                "contentFeed": "50f450b0987d032f7409eea8",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -401,7 +401,7 @@
               },
               {
                 "name": "jplivestream",
-                "contentFeed": "50eb183b499a021ace00e0dc",
+                "contentFeed": "50f4510b987d03164006ce71",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -410,7 +410,7 @@
               },
               {
                 "name": "jpmars",
-                "contentFeed": "50eb18aa91954a46b700d261",
+                "contentFeed": "50f45164e2a64277dd031eb4",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -419,7 +419,7 @@
               },
               {
                 "name": "jppbak",
-                "contentFeed": "50eb1f60e2a6422bc9001d8c",
+                "contentFeed": "50f451c691954a077d254b98",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -428,7 +428,7 @@
               },
               {
                 "name": "jppbbc",
-                "contentFeed": "50eb2156987d0351e800262f",
+                "contentFeed": "50f45220499a022be50d946c",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -437,7 +437,7 @@
               },
               {
                 "name": "jppblime",
-                "contentFeed": "50eb228de6cd994e97003950",
+                "contentFeed": "50f45329e6cd9950f503f207",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -446,7 +446,7 @@
               },
               {
                 "name": "jpanalytics",
-                "contentFeed": "50eb36085f9cfa1b650092b8",
+                "contentFeed": "50f453965f9cfa3887260f7a",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -455,7 +455,7 @@
               },
               {
                 "name": "jpuploading",
-                "contentFeed": "50eb366de6cd990c2f009fe8",
+                "contentFeed": "50f453e4499a02523c00f6fd",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -482,7 +482,7 @@
               },
               {
                 "name": "apacacservice",
-                "contentFeed": "50eb0da0499a021ace00694b",
+                "contentFeed": "50f455825f9cfa3c450121d3",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -491,7 +491,7 @@
               },
               {
                 "name": "apacacstudio",
-                "contentFeed": "50f455825f9cfa3c450121d3",
+                "contentFeed": "50f455c3e6cd99354e00b06c",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
