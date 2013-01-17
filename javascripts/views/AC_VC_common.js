@@ -20,6 +20,7 @@
     $("body").on( "tap", "#content", sideNavClickedContent);
     $("body").on( "tap", "#videos", sideNavClickedVideos);
     $( "#pagetwo" ).on( "tap", ".back-button", bc.ui.backPage );
+    $( "#pagetwo" ).on( "swipe", bc.ui.backPage );
   }
 
   function onGetDataError( error ) {

@@ -41,7 +41,7 @@
             "navigationIcon": "images/icons/appcloud.png",
             "uri": "appcloud.html",
             "locales": "./txt/locales/en.txt",
-            "markup": "./txt/markup/appcloud.txt",
+            "markup": "./txt/markup/ac_vc_common.txt",
             "data": [
               {
                 "name": "acupdate",
@@ -87,7 +87,7 @@
             "navigationIcon": "images/icons/videocloud.png",
             "uri": "videocloud.html",
             "locales": "./txt/locales/en.txt",
-            "markup": "./txt/markup/videocloud.txt",
+            "markup": "./txt/markup/ac_vc_common.txt",
             "data": [
               {
                 "name": "vcupdate",

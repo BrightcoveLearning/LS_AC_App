@@ -10,6 +10,7 @@
     bc.core.getData("vcvideos", onGetVideoDataSuccess, onGetDataError);
 
     registerEventListeners();
+
   }
 
 })( jQuery )
