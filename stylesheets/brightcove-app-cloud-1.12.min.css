@@ -310,9 +310,9 @@ body {
 	color:#cf5a14;
 	background text-shadow:#000 0 2px 1px;
 	-webkit-box-flex:0;
-	/*	overflow:hidden;*/
+	overflow:visible;
 	background:transparent;
-
+	z-index: 999999;
 }
 
 .header h1 {

@@ -17,7 +17,7 @@
   {{twitteritems}}
       <li {{if recentBoolean}}class="liDetail unread"{{else}}class="liDetail"{{/if}} >
           {{text}}<br /><br />
-          <p>{{created_at}}</p>
+          <p>{{created_at|date}}</p>
       </li>
   {{/twitteritems}}
 </ul>

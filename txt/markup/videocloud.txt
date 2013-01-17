@@ -1,11 +1,11 @@
 ===== display-update-item-tmpl
 <ul>
-  {{vcupdateitems}}
+  {{updateitems}}
       <li {{if recentBoolean}}class="liDetail unread"{{else}}class="liDetail"{{/if}} data-guid="{{guid}}" data-type="update">
           <h3>{{title}}</h3>
-          <p>{{pubDate}}</p>
+          <p>{{pubDate|date}}</p>
       </li>
-  {{/vcupdateitems}}
+  {{/updateitems}}
 </ul>
 
 ===== display-update-tmpl
@@ -14,12 +14,12 @@ Release Date: {{selectedUpdate.releaseDate}}<br />
 
 ===== display-recent-item-tmpl
 <ul>
-  {{vcrecentitems}}
+  {{recentitems}}
     <li {{if recentBoolean}}class="liDetail unread"{{else}}class="liDetail"{{/if}} data-guid="{{guid}}">
       <h3>{{title}}</h3>
       <p>{{displayDescription}}</p>
     </li>
-  {{/vcrecentitems}}
+  {{/recentitems}}
 </ul>
 
 ===== display-doc-tmpl

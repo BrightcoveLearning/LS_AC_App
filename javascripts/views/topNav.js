@@ -17,3 +17,7 @@ function topNavClickedZC( event ) {
 function topNavClickedS( event ) {
   bc.device.navigateToView("status.html");
 }
+
+Mark.pipes.date = function (date) {
+    return new Date(+date || date).toLocaleDateString();
+};
