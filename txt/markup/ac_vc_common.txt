@@ -9,7 +9,7 @@
 </ul>
 
 ===== display-update-tmpl
-Release Date: {{selectedUpdate.releaseDate}}<br />
+<h3>Release Date: {{selectedUpdate.releaseDate}}</h3>
 {{selectedUpdate.docHTML}}<br />
 
 ===== display-recent-item-tmpl
@@ -24,7 +24,8 @@ Release Date: {{selectedUpdate.releaseDate}}<br />
 
 ===== display-doc-tmpl
 <link rel="stylesheet" type="text/css" href="http://files.brightcove.com/BCL-document.css">
-{{docHTML}}
+<h1>{{titleAndDoc.title}}</h1>
+{{titleAndDoc.docHTML}}
 
 ===== play-video-tmpl
 <!-- player publishing code -->
@@ -54,7 +55,7 @@ Release Date: {{selectedUpdate.releaseDate}}<br />
     player = brightcove.api.getExperience(experienceID);
   }
   // handler for player ready
-  onTemplateRead = function(evt) {
+  onTemplateReady = function(evt) {
     videoPlayer = player.getModule(brightcove.api.modules.APIModules.VIDEO_PLAYER);
   }
   // call this function to play a video by ID

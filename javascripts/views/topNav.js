@@ -21,3 +21,5 @@ function topNavClickedS( event ) {
 Mark.pipes.date = function (date) {
     return new Date(+date || date).toLocaleDateString();
 };
+
+var player,videoPlayer;
