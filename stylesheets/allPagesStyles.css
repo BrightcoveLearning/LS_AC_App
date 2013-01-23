@@ -6,7 +6,7 @@
 
 body {
 	background-color:#FFF;
-  font-family: 'ProximaNovaA-Regular';
+  font-family: 'ProximaNova-Regular';
 }
 
 #back-button {
@@ -65,7 +65,7 @@ background-color: #717171;
 }
 
 h1, h2, h3, h4 {
-font-family: 'ProximaNovaA-Semibold';
+font-family: 'ProximaNova-Semibold';
 }
 
 
@@ -147,7 +147,7 @@ div#second-page-content.content {
 }
 
 #second-page-content h2, h3, h4 {
-  font-family: 'ProximaNovaA-Regular';
+  font-family: 'ProximaNova-Regular';
 }
 
 .BrightcoveExperience {
