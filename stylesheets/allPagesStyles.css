@@ -11,7 +11,7 @@ body {
 
 #back-button {
 	padding: 0px;
-	margin: 0px;
+	margin:  0px 0px 20px;
 	position: absolute;
 	top: 90px;
 	left: 25px;
@@ -63,11 +63,6 @@ background-color: #717171;
 .nav-stacked li {
   margin-left: 10px;
 }
-
-h1, h2, h3, h4 {
-font-family: 'ProximaNova-Semibold';
-}
-
 
 
 
@@ -143,14 +138,70 @@ div#second-page-content.content {
 }
 
 #second-page-content h1, h2, h3, h4 {
-  margin-bottom: 0px;
+  margin: 20px 0px 0px;
+  color:#515151;
+}
+
+#second-page-content h2 {
+  font-size: 24px;
+  line-height:26px;
+  text-transform:uppercase;
+}
+
+#second-page-content h3 {
+  font-size: 20px;
+  line-height:24px;
+}
+
+#second-page-content h4 {
+  font-size: 16px;
+  line-height:20px;
 }
 
 #second-page-content h2, h3, h4 {
-  font-family: 'ProximaNova-Regular';
+  font-family: 'ProximaNova-Semibold';
 }
+
+#second-page-content em {
+  font-family: 'ProximaNova-RegularIt';
+}
+
+#second-page-content a {
+	color:#717171;
+	text-decoration:underline;
+}
+
 
 .BrightcoveExperience {
   width: 85%;
   height: 85%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
