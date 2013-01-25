@@ -1,5 +1,6 @@
 	var _dataCorpBlog = {};
 	var _dataTwitterFeed = {};
+	var _aboutHTML = "";
 
 	var recentTwitter = 0;
 	var recentCorpBlog = 0;
@@ -13,6 +14,7 @@
 		$("body").on( "tap", "#mainNavTargetS", topNavClickedS);
 		$("body").on( "tap", "#blog", sideNavClickedBlog);
 		$("body").on( "tap", "#twitter", sideNavClickedTwitter);
+		$("body").on( "tap", "#about", sideNavClickedAbout);
 		$( "#pagetwo" ).on( "tap", ".back-button", bc.ui.backPage );
     $( "#pagetwo" ).on( "swipe", bc.ui.backPage );
 	}
@@ -29,6 +31,15 @@
 	function sideNavClickedTwitter( event ){
     $(this).addClass("active").siblings().removeClass("active");
 		setTwitterList( _dataTwitterFeed );
+	}
+
+	function sideNavClickedAbout( event ){
+    $(this).addClass("active").siblings().removeClass("active");
+		setAboutHTML( _aboutHTML );
+	}
+
+	function onGetAboutHTMLSuccess( data ) {
+		_aboutHTML = data.text;
 	}
 
 	function onGetCorpBlogSuccess( data ){
@@ -66,6 +77,11 @@
 		_dataTwitterFeed = localData;
 		$(".badge.badge-inverse.badge4twitter").html( recentTwitter );
 		setTwitterList( _dataTwitterFeed );
+	}
+
+	function setAboutHTML( data ){
+		//Set the HTML of the element.
+		$( "#first-page-details" ).html( data );
 	}
 
 	function setTwitterList( data ){

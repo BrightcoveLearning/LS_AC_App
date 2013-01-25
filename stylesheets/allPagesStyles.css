@@ -4,6 +4,22 @@
     }
 }
 
+@media (max-width: 767px) {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 979px) {
+  .header {
+    margin-bottom: 12px;
+    height: 45px;
+  }
+}
+
 body {
 	background-color:#FFF;
   font-family: 'ProximaNova-Regular';
@@ -23,7 +39,10 @@ body {
 	height:25px;
 }
 
-
+/*.btn.btn-navbar {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}*/
 
 /*  SIDE NAV  */
 
@@ -129,12 +148,13 @@ left: 20px;
   text-decoration: none;
 }
 
-div#second-page-content.content {
-	padding:20px;
+section#pagetwo.page.header {
+  height: 40px;
 }
 
-#pagetwo.header {
-  height: 60px;
+div#second-page-content.content {
+  padding:20px;
+  padding-top: 0px;
 }
 
 #second-page-content h1, h2, h3, h4 {
@@ -171,37 +191,7 @@ div#second-page-content.content {
 	text-decoration:underline;
 }
 
-
 .BrightcoveExperience {
   width: 85%;
   height: 85%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

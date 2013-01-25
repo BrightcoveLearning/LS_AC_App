@@ -33,6 +33,11 @@
                     "pubDate":      { "type": "string" },
                     "guid":         { "type": "string" }
                 }
+              },
+              {
+                "name": "abouthtml",
+                "contentFeed": "5102a3fd5f9cfa184c03adf6",
+                "type": "text_block"
               }
             ]
         },
