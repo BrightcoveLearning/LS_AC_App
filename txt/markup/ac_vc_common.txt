@@ -28,23 +28,27 @@
 {{titleAndDoc.docHTML}}
 
 ===== play-video-tmpl
-<!-- player publishing code -->
-<object id="myExperience1968740782001" class="BrightcoveExperience">
-  <param name="bgcolor" value="#FFFFFF" />
-  <param name="width" value="480" />
-  <param name="height" value="270" />
-  <param name="playerID" value="1990588098001" />
-  <param name="playerKey" value="AQ~~,AAAABLsQgFE~,jGXrTxeVLARljSH-mlMD_DMmP5gTLpC6" />
-  <param name="isVid" value="true" />
-  <param name="isUI" value="true" />
-  <param name="dynamicStreaming" value="true" />
-  <!-- you can remove the line below unless you want a default video in the player -->
-  <param name="@videoPlayer" value="{{videoID}}" />
-  <!-- import player API and register event handlers -->
-  <param name="includeAPI" value="true" />
-  <param name="templateLoadHandler" value="onTemplateLoad" />
-  <param name="templateReadyHandler" value="onTemplateReady" />
-</object>
+<div style="height: 90%;width: 90%;padding-bottom: 56%">
+  <div style="height: 100%;width: 100%">
+    <!-- player publishing code -->
+    <object id="myExperience1968740782001" class="BrightcoveExperience">
+      <param name="bgcolor" value="#FFFFFF" />
+      <param name="width" value="480" />
+      <param name="height" value="270" />
+      <param name="playerID" value="1990588098001" />
+      <param name="playerKey" value="AQ~~,AAAABLsQgFE~,jGXrTxeVLARljSH-mlMD_DMmP5gTLpC6" />
+      <param name="isVid" value="true" />
+      <param name="isUI" value="true" />
+      <param name="dynamicStreaming" value="true" />
+      <!-- you can remove the line below unless you want a default video in the player -->
+      <param name="@videoPlayer" value="{{videoID}}" />
+      <!-- import player API and register event handlers -->
+      <param name="includeAPI" value="true" />
+      <param name="templateLoadHandler" value="onTemplateLoad" />
+      <param name="templateReadyHandler" value="onTemplateReady" />
+    </object>
+  </div>
+</div>
 <script type="text/javascript">brightcove.createExperiences();</script>
 <!-- end of player publishing code -->
 <!-- script to load videos -->
