@@ -4,6 +4,7 @@
 
   function initialize() {
     bc.core.cache( "lastVisit", "2012-12-11T22:04:23.763Z" );
+    bc.device.setAutoRotateDirections(["all"]);
     registerEventListeners();
     populateNATable();
   }

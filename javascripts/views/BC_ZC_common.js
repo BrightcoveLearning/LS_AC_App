@@ -17,6 +17,7 @@
 		$("body").on( "tap", "#about", sideNavClickedAbout);
 		$( "#pagetwo" ).on( "tap", ".back-button", bc.ui.backPage );
     $( "#pagetwo" ).on( "swipe", bc.ui.backPage );
+    bc.device.setAutoRotateDirections(["all"]);
 	}
 
 	function onGetDataError( error ) {

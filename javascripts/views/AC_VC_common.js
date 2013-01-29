@@ -20,6 +20,7 @@
 		$("body").on( "tap", "#videos", sideNavClickedVideos);
 		$( "#pagetwo" ).on( "tap", ".back-button", backAndCleanUp );
 		$( "#pagetwo" ).on( "swipe", backAndCleanUp );
+		bc.device.setAutoRotateDirections(["all"]);
 	}
 
 	function backAndCleanUp(){

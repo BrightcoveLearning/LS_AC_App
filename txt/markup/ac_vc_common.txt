@@ -28,8 +28,8 @@
 {{titleAndDoc.docHTML}}
 
 ===== play-video-tmpl
-<div style="height: 90%;width: 90%;padding-bottom: 56%">
-  <div style="height: 100%;width: 100%">
+<div class="outer-container">
+  <div class="inner-container">
     <!-- player publishing code -->
     <object id="myExperience1968740782001" class="BrightcoveExperience">
       <param name="bgcolor" value="#FFFFFF" />
