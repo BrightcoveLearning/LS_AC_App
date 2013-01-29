@@ -1,6 +1,6 @@
 {
-    "name": "BC App",
-    "description": "Brightcove Learning App",
+    "name": "BC Learning Services App",
+    "description": "BC Learning Services App",
     "version": "1.0",
     "devices": [
         "iPhone",
