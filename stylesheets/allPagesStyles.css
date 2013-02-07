@@ -1,6 +1,7 @@
 @media (min-width: 979px) {
     .header {
-        height: 60px;
+        height: 30px;
+        padding-bottom: 5px;
     }
 }
 
@@ -15,16 +16,21 @@
 
 @media (max-width: 979px) {
   .header {
-    margin-bottom: 12px;
-  }
-  #pagetwo .header {
-    height: 45px;
+    margin-bottom: 5px;
   }
 }
 
 body {
 	background-color:#FFF;
   font-family: 'ProximaNova-Regular';
+}
+
+div#first-page-details {
+  margin-top: 2px;
+}
+
+#pagetwo .header {
+  height: 50px;
 }
 
 #back-button {
@@ -36,15 +42,41 @@ body {
 }
 
 /*  TOP NAV  */
-
 .nav > li > a {
-	height:25px;
+  height:30px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 15px;
+  line-height: 30px;
 }
 
-/*.btn.btn-navbar {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}*/
+.navbar .nav > li > a {
+  height:30px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 15px;
+}
+
+.app-navigation {
+      font-size: 90%;
+      font-weight: bold;
+}
+.vc-nav {
+  color: #F3951D;
+}
+.ac-nav {
+  color: #9EB84E;
+}
+.zc-nav {
+  color: #5186A4;
+}
+
+.navbar-fixed-top .navbar-inner  {
+  margin: 0px;
+  padding: 0px;
+  min-height: 30px;
+}
+
 
 /*  SIDE NAV  */
 
@@ -54,11 +86,12 @@ margin: 2px 2px 0 0;
 line-height: none;
 }
 
-.nav-pills > .active,
+/*.nav-pills > .active,
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
 color: #ffffff;
 }
+*/
 
 a {
 color:#717171;
@@ -69,9 +102,9 @@ color:#606060;
 text-decoration: none;
 }
 
-.nav-pills.nav-stacked > li > a:active {
+/*.nav-pills.nav-stacked > li > a:active {
 color:#fff;
-}
+}*/
 
 .label-inverse, .badge-inverse {
 background-color: #717171;
