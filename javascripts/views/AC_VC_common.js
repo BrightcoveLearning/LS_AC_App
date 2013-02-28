@@ -8,9 +8,13 @@
 
 	var secondPageMode = "";
 
+	var mySpinner = bc.ui.spinner();
+
+	var $body = $('body');
+
 	function registerEventListeners() {
 		$( "#first-page-details" ).on( "tap", "li", injectSecondPageDetails );
-		$("body").on( "tap", "#mainNavTargetBC", topNavClickedBC);
+		$body.on( "tap", "#mainNavTargetBC", topNavClickedBC);
 		$("body").on( "tap", "#mainNavTargetVC", topNavClickedVC);
 		$("body").on( "tap", "#mainNavTargetAC", topNavClickedAC);
 		$("body").on( "tap", "#mainNavTargetZC", topNavClickedZC);
@@ -20,7 +24,15 @@
 		$("body").on( "tap", "#videos", sideNavClickedVideos);
 		$( "#pagetwo" ).on( "tap", ".back-button", backAndCleanUp );
 		$( "#pagetwo" ).on( "swipe", backAndCleanUp );
+		//$ ( bc ).on( 'pageshow', alert('showpage') );
+		$ ( bc ).on( 'pageshow', hideSpinner );
 		bc.device.setAutoRotateDirections(["all"]);
+		$( 'body' ).append( mySpinner );
+		$( '.spinner' ).hide();
+	}
+
+	function hideSpinner(event){
+		$( '.spinner' ).hide();
 	}
 
 	function backAndCleanUp(){
@@ -52,6 +64,8 @@
 	}
 
 	function injectSecondPageDetails( event ){
+		$( '.spinner' ).show();
+		//alert('showing spinner');
 		var type = $(this).data("type");
 		var guid = $(this).data("guid");
 		if (type == "update") {

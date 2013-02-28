@@ -15,7 +15,7 @@
 }
 
 @media (min-width: 481px) and (max-width: 979px) {
-  .header {
+  #pageone .header {
     margin-bottom: 35px;
   }
 }
@@ -30,12 +30,12 @@ div#first-page-details {
 }
 
 #pagetwo .header {
-  height: 50px;
+  height: 37px;
 }
 
 #back-button {
 	padding: 0px;
-	margin:  0px 0px 20px;
+	margin:  0px 0px 10px;
 	position: absolute;
 	top: 90px;
 	left: 25px;
