@@ -1,5 +1,7 @@
 ( function( $ ) {
 
+  var $body = $('body');
+
   $( bc ).bind( "init", initialize );
 
   function initialize() {
@@ -27,11 +29,10 @@
   }
 
   function registerEventListeners() {
-    $("body").on( "tap", "#mainNavTargetBC", topNavClickedBC);
-    $("body").on( "tap", "#mainNavTargetVC", topNavClickedVC);
-    $("body").on( "tap", "#mainNavTargetAC", topNavClickedAC);
-    $("body").on( "tap", "#mainNavTargetZC", topNavClickedZC);
-    $("body").on( "tap", "#mainNavTargetS", topNavClickedS);
+    $body.on( "tap", "#mainNavTargetBC", topNavClickedBC);
+    $body.on( "tap", "#mainNavTargetVC", topNavClickedVC);
+    $body.on( "tap", "#mainNavTargetZC", topNavClickedZC);
+    $body.on( "tap", "#mainNavTargetS", topNavClickedS);
 
     $('a[data-toggle="tab"]').on('shown', function (e) {
       var selectedRegion = $(e.target).html();
@@ -54,8 +55,6 @@
 
   function populateNATable( ) {
     var naServices = [
-       { dataSource: "naacservice", title: "App Cloud - Service" },
-       { dataSource: "naacstudio", title: "App Cloud - Studio" },
        { dataSource: "nadissyn", title: "Distribution/Syndication" },
        { dataSource: "nalivestream", title: "Live Streaming" },
        { dataSource: "namars", title: "Media API Read Service" },
@@ -77,8 +76,6 @@
 
   function populateEMEATable( ) {
     var emeaServices = [
-       { dataSource: "emeaacservice", title: "App Cloud - Service" },
-       { dataSource: "emeaacstudio", title: "App Cloud - Studio" },
        { dataSource: "emeadissyn", title: "Distribution/Syndication" },
        { dataSource: "emealivestream", title: "Live Streaming" },
        { dataSource: "emeamars", title: "Media API Read Service" },
@@ -100,8 +97,6 @@
 
   function populateJapanTable( ) {
     var jpServices = [
-       { dataSource: "jpacservice", title: "App Cloud - Service" },
-       { dataSource: "jpacstudio", title: "App Cloud - Studio" },
        { dataSource: "jpdissyn", title: "Distribution/Syndication" },
        { dataSource: "jplivestream", title: "Live Streaming" },
        { dataSource: "jpmars", title: "Media API Read Service" },
@@ -123,10 +118,7 @@
 
   function populateAPACTable( ) {
     var apacServices = [
-       { dataSource: "apacacservice", title: "App Cloud - Service" },
-       { dataSource: "apacacstudio", title: "App Cloud - Studio" },
        { dataSource: "apacdissyn", title: "Distribution/Syndication" },
-       { dataSource: "apaclivestream", title: "Live Streaming" },
        { dataSource: "apacmars", title: "Media API Read Service" },
        { dataSource: "apacpbak", title: "Playback - Akamai" },
        { dataSource: "apacpbbc", title: "Playback - Brightcove" },

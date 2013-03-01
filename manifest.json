@@ -42,52 +42,6 @@
             ]
         },
         {
-            "navigationTitle": "App Cloud Page",
-            "navigationIcon": "images/icons/appcloud.png",
-            "uri": "appcloud.html",
-            "locales": "./txt/locales/en.txt",
-            "markup": "./txt/markup/ac_vc_common.txt",
-            "data": [
-              {
-                "name": "acupdate",
-                "contentFeed": "50a7d4fb8a3fd24542093b92",
-                "type": "feed",
-                "items": {
-                    "title":     { "type": "string" },
-                    "description":    { "type": "string" },
-                    "pubDate":       { "type": "string" },
-                    "guid":       { "type": "string" }
-                }
-              },
-              {
-                "name": "acrecent",
-                "contentFeed": "50a7d46fec8e603cf0097a51",
-                "type": "feed",
-                "items": {
-                    "title":     { "type": "string" },
-                    "link":       { "type": "string" },
-                    "description":    { "type": "string" },
-                    "category":       { "type": "string" },
-                    "pubDate":       { "type": "string" },
-                    "guid":       { "type": "string" }
-                }
-              },
-              {
-                "name": "acvideos",
-                "contentFeed": "50c745b92fa4024c1f129628",
-                "type": "feed",
-                "items": {
-                    "title":     { "type": "string" },
-                    "link":       { "type": "string" },
-                    "description":    { "type": "string" },
-                    "category":       { "type": "string" },
-                    "pubDate":       { "type": "string" },
-                    "guid":       { "type": "string" }
-                }
-              }
-            ]
-        },
-        {
             "navigationTitle": "Video Cloud Page",
             "navigationIcon": "images/icons/videocloud.png",
             "uri": "videocloud.html",
@@ -161,24 +115,6 @@
             "locales": "./txt/locales/en.txt",
             "markup": "./txt/markup/status.txt",
             "data": [
-              {
-                "name": "naacservice",
-                "contentFeed": "50d0aa3a077b2877b800722a",
-                "type": "feed",
-                "items": {
-                    "sb_status":        { "type": "string" },
-                    "sb_message":       { "type": "string" }
-                }
-              },
-              {
-                "name": "naacstudio",
-                "contentFeed": "50d0ac012fa4024fab008020",
-                "type": "feed",
-                "items": {
-                    "sb_status":        { "type": "string" },
-                    "sb_message":       { "type": "string" }
-                }
-              },
               {
                 "name": "nadissyn",
                 "contentFeed": "50e73c4c91954a058807396c",
@@ -263,24 +199,6 @@
               {
                 "name": "navidproc",
                 "contentFeed": "50e84f3c5f9cfa192f08852f",
-                "type": "feed",
-                "items": {
-                    "sb_status":        { "type": "string" },
-                    "sb_message":       { "type": "string" }
-                }
-              },
-              {
-                "name": "emeaacservice",
-                "contentFeed": "50eb0da0499a021ace00694b",
-                "type": "feed",
-                "items": {
-                    "sb_status":        { "type": "string" },
-                    "sb_message":       { "type": "string" }
-                }
-              },
-              {
-                "name": "emeaacstudio",
-                "contentFeed": "50eb0ed4499a021ad2007801",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },
@@ -378,24 +296,6 @@
                 }
               },
               {
-                "name": "jpacservice",
-                "contentFeed": "50f44da5499a0264e90abee6",
-                "type": "feed",
-                "items": {
-                    "sb_status":        { "type": "string" },
-                    "sb_message":       { "type": "string" }
-                }
-              },
-              {
-                "name": "jpacstudio",
-                "contentFeed": "50f44e3e91954a24bc01e08e",
-                "type": "feed",
-                "items": {
-                    "sb_status":        { "type": "string" },
-                    "sb_message":       { "type": "string" }
-                }
-              },
-              {
                 "name": "jpdissyn",
                 "contentFeed": "50f450b0987d032f7409eea8",
                 "type": "feed",
@@ -486,35 +386,8 @@
                 }
               },
               {
-                "name": "apacacservice",
-                "contentFeed": "50f455825f9cfa3c450121d3",
-                "type": "feed",
-                "items": {
-                    "sb_status":        { "type": "string" },
-                    "sb_message":       { "type": "string" }
-                }
-              },
-              {
-                "name": "apacacstudio",
-                "contentFeed": "50f455c3e6cd99354e00b06c",
-                "type": "feed",
-                "items": {
-                    "sb_status":        { "type": "string" },
-                    "sb_message":       { "type": "string" }
-                }
-              },
-              {
                 "name": "apacdissyn",
                 "contentFeed": "50f4560be6cd99531d102b08",
-                "type": "feed",
-                "items": {
-                    "sb_status":        { "type": "string" },
-                    "sb_message":       { "type": "string" }
-                }
-              },
-              {
-                "name": "apaclivestream",
-                "contentFeed": "50f45667499a022be50db2bc",
                 "type": "feed",
                 "items": {
                     "sb_status":        { "type": "string" },

@@ -15,19 +15,18 @@
 	function registerEventListeners() {
 		$( "#first-page-details" ).on( "tap", "li", injectSecondPageDetails );
 		$body.on( "tap", "#mainNavTargetBC", topNavClickedBC);
-		$("body").on( "tap", "#mainNavTargetVC", topNavClickedVC);
-		$("body").on( "tap", "#mainNavTargetAC", topNavClickedAC);
-		$("body").on( "tap", "#mainNavTargetZC", topNavClickedZC);
-		$("body").on( "tap", "#mainNavTargetS", topNavClickedS);
-		$("body").on( "tap", "#updates", sideNavClickedUpdates);
-		$("body").on( "tap", "#content", sideNavClickedContent);
-		$("body").on( "tap", "#videos", sideNavClickedVideos);
+		$body.on( "tap", "#mainNavTargetVC", topNavClickedVC);
+		$body.on( "tap", "#mainNavTargetZC", topNavClickedZC);
+		$body.on( "tap", "#mainNavTargetS", topNavClickedS);
+		$body.on( "tap", "#updates", sideNavClickedUpdates);
+		$body.on( "tap", "#content", sideNavClickedContent);
+		$body.on( "tap", "#videos", sideNavClickedVideos);
 		$( "#pagetwo" ).on( "tap", ".back-button", backAndCleanUp );
 		$( "#pagetwo" ).on( "swipe", backAndCleanUp );
 		//$ ( bc ).on( 'pageshow', alert('showpage') );
 		$ ( bc ).on( 'pageshow', hideSpinner );
 		bc.device.setAutoRotateDirections(["all"]);
-		$( 'body' ).append( mySpinner );
+		$body.append( mySpinner );
 		$( '.spinner' ).hide();
 	}
 
@@ -121,9 +120,8 @@
 
 
 	function onGetVideoDataSuccess( data ) {
-		var lastVisitFromCache = bc.core.cache( "lastVisit" );
-		var lastVisitDateObject = new Date( lastVisitFromCache );
-		for (var i = 0; i < data.length; i++) {
+		var araLength = data.length;
+		for (var i = 0; i < araLength; i++) {
 			var thisItem = data[i];
 			var fullDescription = thisItem.description;
 			var theLink = thisItem.link;
@@ -134,7 +132,7 @@
 			data[i].isVideo = true;
 			data[i].displayDescription = displayDescription;
 			data[i].videoID = videoID;
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
+			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
 			if ( data[i].recentBoolean ) {
 				recentVideos ++;
 			}
@@ -144,9 +142,8 @@
 	}
 
 	function onGetUpdateDataSuccess( data ) {
-		var lastVisitFromCache = bc.core.cache( "lastVisit" );
-		var lastVisitDateObject = new Date( lastVisitFromCache );
-		for (var i = 0; i < data.length; i++) {
+		var araLength = data.length;
+		for (var i = 0; i < araLength; i++) {
 			var thisItem = data[i];
 			var fullDescription = thisItem.description;
 			var startOfH3Location = fullDescription.indexOf("<h3");
@@ -154,7 +151,7 @@
 			var releaseDate = $(fullDescription).find( ".date-display-single" ).html();
 			data[i].docHTML = docHTML;
 			data[i].releaseDate = releaseDate;
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
+			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
 			if ( data[i].recentBoolean ) {
 				recentUpdates ++;
 			}
@@ -164,9 +161,8 @@
 	}
 
 	function onGetRecentDataSuccess( data ) {
-		var lastVisitFromCache = bc.core.cache( "lastVisit" );
-		var lastVisitDateObject = new Date( lastVisitFromCache );
-		for (var i = 0; i < data.length; i++) {
+		var araLength = data.length;
+		for (var i = 0; i < araLength; i++) {
 			var thisItem = data[i];
 			var fullDescription = thisItem.description;
 			var theLink = thisItem.link;
@@ -190,7 +186,7 @@
 				data[i].linkPhrase = "Read the Entire Document";
 				data[i].docHTML = $.trim(docHTML);
 			}
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate, lastVisitDateObject );
+			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
 			if ( data[i].recentBoolean ) {
 				recentContent ++;
 			}
@@ -284,9 +280,11 @@
 		}
 	}
 
-	function checkForRecent( pubDate, lastVisit ) {
+	function checkForRecent( pubDate ) {
+		var lastVisitFromCache = bc.core.cache( "lastVisit" );
+		var lastVisitDateObject = new Date( lastVisitFromCache );
 		var publishDateObject = new Date( pubDate );
-		if ( publishDateObject > lastVisit ) {
+		if ( publishDateObject > lastVisitDateObject ) {
 			return true;
 		} else {
 			return false;

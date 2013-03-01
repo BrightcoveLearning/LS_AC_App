@@ -5,16 +5,17 @@
 	var recentTwitter = 0;
 	var recentCorpBlog = 0;
 
+	var $body = $('body');
+
 	function registerEventListeners() {
 		$( "#first-page-details" ).on( "tap", "li", injectCorpBlogContent );
-		$("body").on( "tap", "#mainNavTargetBC", topNavClickedBC);
-		$("body").on( "tap", "#mainNavTargetVC", topNavClickedVC);
-		$("body").on( "tap", "#mainNavTargetAC", topNavClickedAC);
-		$("body").on( "tap", "#mainNavTargetZC", topNavClickedZC);
-		$("body").on( "tap", "#mainNavTargetS", topNavClickedS);
-		$("body").on( "tap", "#blog", sideNavClickedBlog);
-		$("body").on( "tap", "#twitter", sideNavClickedTwitter);
-		$("body").on( "tap", "#about", sideNavClickedAbout);
+		$body.on( "tap", "#mainNavTargetBC", topNavClickedBC);
+		$body.on( "tap", "#mainNavTargetVC", topNavClickedVC);
+		$body.on( "tap", "#mainNavTargetZC", topNavClickedZC);
+		$body.on( "tap", "#mainNavTargetS", topNavClickedS);
+		$body.on( "tap", "#blog", sideNavClickedBlog);
+		$body.on( "tap", "#twitter", sideNavClickedTwitter);
+		$body.on( "tap", "#about", sideNavClickedAbout);
 		$( "#pagetwo" ).on( "tap", ".back-button", bc.ui.backPage );
     $( "#pagetwo" ).on( "swipe", bc.ui.backPage );
     bc.device.setAutoRotateDirections(["all"]);
@@ -44,6 +45,7 @@
 	}
 
 	function onGetCorpBlogSuccess( data ){
+console.log ('running');
 		for (var i = 0; i < data.length; i++) {
 			var thisItem = data[i];
 			var fullDescription = thisItem.description;
@@ -166,10 +168,21 @@
 		}
 	}
 
+/*	function checkForRecent( pubDate ) {
+		//var publishDateObject = new Date( pubDate );
+		var lastVisitFromCache = bc.core.cache( "lastVisit" );
+		//var lastVisitDateObject = new Date( lastVisitFromCache );
+		if ( pubDate > lastVisitFromCache ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+*/
 	function checkForRecent( pubDate ) {
-		var publishDateObject = new Date( pubDate );
 		var lastVisitFromCache = bc.core.cache( "lastVisit" );
 		var lastVisitDateObject = new Date( lastVisitFromCache );
+		var publishDateObject = new Date( pubDate );
 		if ( publishDateObject > lastVisitDateObject ) {
 			return true;
 		} else {
