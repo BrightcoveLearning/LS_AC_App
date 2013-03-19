@@ -16,9 +16,17 @@
 		$body.on( "tap", "#blog", sideNavClickedBlog);
 		$body.on( "tap", "#twitter", sideNavClickedTwitter);
 		$body.on( "tap", "#about", sideNavClickedAbout);
-		$( "#pagetwo" ).on( "tap", ".back-button", bc.ui.backPage );
-    $( "#pagetwo" ).on( "swipe", bc.ui.backPage );
+		$( "#pagetwo" ).on( "tap", ".back-button", backAndCleanUp );
+    $( "#pagetwo" ).on( "swipe", backAndCleanUp );
     bc.device.setAutoRotateDirections(["all"]);
+	}
+
+	function backAndCleanUp(){
+		bc.ui.backPage();
+		if ( videoPlayer != null) {
+			videoPlayer.pause(true);
+		}
+		$("#second-page-content").html("");
 	}
 
 	function onGetDataError( error ) {
@@ -45,7 +53,6 @@
 	}
 
 	function onGetCorpBlogSuccess( data ){
-console.log ('running');
 		for (var i = 0; i < data.length; i++) {
 			var thisItem = data[i];
 			var fullDescription = thisItem.description;
@@ -57,7 +64,7 @@ console.log ('running');
 			} else {
 				data[i].forTease = fullDescription;
 			}
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
+			data[i].recentBoolean = checkForRecent( thisItem.guid );
 			if ( data[i].recentBoolean ) {
 				recentCorpBlog ++;
 			}
@@ -72,7 +79,7 @@ console.log ('running');
 		for (var i = 0; i < localData.length; i++) {
 			var thisItem = localData[i];
 			localData[i].guid = thisItem.id;
-			localData[i].recentBoolean = checkForRecent( thisItem.created_at );
+			localData[i].recentBoolean = checkForRecent( thisItem.guid );
 			if ( localData[i].recentBoolean ) {
 				recentTwitter ++;
 			}
@@ -121,6 +128,7 @@ console.log ('running');
 
 	function injectCorpBlogContent( evt ){
 		var guid = $(this).data("guid");
+		addIDtoCache(guid);
 		var selectedItem = getCorpBlogItemByGUID(guid);
 		var context = { selectedCorpBlog: selectedItem };
 		var markupTemplate = bc.templates["display-corpblog-tmpl"];
@@ -140,6 +148,7 @@ console.log ('running');
 
 	function injectTwitterContent( evt ){
 		var guid = $(this).data("guid");
+		addIDtoCache(guid);
 		var selectedItem = getTwitterItemByGUID(guid);
 
 		if ( selectedItem.recentBoolean ) {
@@ -168,24 +177,17 @@ console.log ('running');
 		}
 	}
 
-/*	function checkForRecent( pubDate ) {
-		//var publishDateObject = new Date( pubDate );
-		var lastVisitFromCache = bc.core.cache( "lastVisit" );
-		//var lastVisitDateObject = new Date( lastVisitFromCache );
-		if ( pubDate > lastVisitFromCache ) {
-			return true;
-		} else {
-			return false;
-		}
+	function addIDtoCache(guid){
+	  if ( contentReadIDs.indexOf(guid) == -1 ){
+			contentReadIDs.push( guid );
+	  	bc.core.cache( "contentReadIDsCache", contentReadIDs);
+	  }
 	}
-*/
-	function checkForRecent( pubDate ) {
-		var lastVisitFromCache = bc.core.cache( "lastVisit" );
-		var lastVisitDateObject = new Date( lastVisitFromCache );
-		var publishDateObject = new Date( pubDate );
-		if ( publishDateObject > lastVisitDateObject ) {
-			return true;
-		} else {
-			return false;
-		}
+
+	function checkForRecent( guid ) {
+	  if ( contentReadIDs.indexOf(guid) == -1 ){
+	  	return true;
+	  }else{
+	  	return false;
+	  }
 	}

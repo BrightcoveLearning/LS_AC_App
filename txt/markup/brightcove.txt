@@ -15,7 +15,7 @@
 ===== display-twitter-tmpl
 <ul>
   {{twitteritems}}
-      <li {{if recentBoolean}}class="liDetail unread"{{else}}class="liDetail"{{/if}} >
+      <li class="liDetail" style="border-bottom-style: solid;border-bottom-width: 2px;" >
           {{text}}<br /><br />
           <p>{{created_at|date}}</p>
       </li>

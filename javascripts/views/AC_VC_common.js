@@ -23,7 +23,6 @@
 		$body.on( "tap", "#videos", sideNavClickedVideos);
 		$( "#pagetwo" ).on( "tap", ".back-button", backAndCleanUp );
 		$( "#pagetwo" ).on( "swipe", backAndCleanUp );
-		//$ ( bc ).on( 'pageshow', alert('showpage') );
 		$ ( bc ).on( 'pageshow', hideSpinner );
 		bc.device.setAutoRotateDirections(["all"]);
 		$body.append( mySpinner );
@@ -39,6 +38,7 @@
 		if ( videoPlayer != null) {
 			videoPlayer.pause(true);
 		}
+		$("second-page-content").html("");
 	}
 
 	function onGetDataError( error ) {
@@ -132,7 +132,7 @@
 			data[i].isVideo = true;
 			data[i].displayDescription = displayDescription;
 			data[i].videoID = videoID;
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
+			data[i].recentBoolean = checkForRecent( thisItem.guid );
 			if ( data[i].recentBoolean ) {
 				recentVideos ++;
 			}
@@ -151,7 +151,7 @@
 			var releaseDate = $(fullDescription).find( ".date-display-single" ).html();
 			data[i].docHTML = docHTML;
 			data[i].releaseDate = releaseDate;
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
+			data[i].recentBoolean = checkForRecent( thisItem.guid );
 			if ( data[i].recentBoolean ) {
 				recentUpdates ++;
 			}
@@ -186,7 +186,7 @@
 				data[i].linkPhrase = "Read the Entire Document";
 				data[i].docHTML = $.trim(docHTML);
 			}
-			data[i].recentBoolean = checkForRecent( thisItem.pubDate );
+			data[i].recentBoolean = checkForRecent( thisItem.guid );
 			if ( data[i].recentBoolean ) {
 				recentContent ++;
 			}
@@ -200,6 +200,7 @@
 	}
 
 	function injectUpdatePageContent( guidParam, liTapped ) {
+   addIDtoCache(guidParam);
 	 var selectedItem = getUpdateItemByGUID(guidParam);
 	 var context = { selectedUpdate: selectedItem };
 	 var markupTemplate = bc.templates["display-update-tmpl"];
@@ -215,6 +216,7 @@
 	}
 
 	function injectRecentPageContent( guidParam, liTapped ) {
+  	addIDtoCache(guidParam);
 		if ( secondPageMode == "content") {
 			var selectedItem = getContentByGUID(guidParam);
 		} else {
@@ -280,15 +282,19 @@
 		}
 	}
 
-	function checkForRecent( pubDate ) {
-		var lastVisitFromCache = bc.core.cache( "lastVisit" );
-		var lastVisitDateObject = new Date( lastVisitFromCache );
-		var publishDateObject = new Date( pubDate );
-		if ( publishDateObject > lastVisitDateObject ) {
-			return true;
-		} else {
-			return false;
-		}
+	function addIDtoCache(guid){
+	  if ( contentReadIDs.indexOf(guid) == -1 ){
+			contentReadIDs.push( guid );
+	  	bc.core.cache( "contentReadIDsCache", contentReadIDs);
+	  }
+	}
+
+	function checkForRecent( guid ) {
+	  if ( contentReadIDs.indexOf(guid) == -1 ){
+	  	return true;
+	  }else{
+	  	return false;
+	  }
 	}
 
 	function checkIfVideoInRecent( localGUID ) {
@@ -298,7 +304,6 @@
 				_dataContent[i].recentBoolean = false;
 				recentContent --;
 				$(".badge.badge-inverse.badge4content").html( recentContent );
-
  				break;
 			}
 		}
