@@ -20,6 +20,23 @@
   }
 }
 
+@media (min-width: 481px) and (max-width: 767px) {
+  #pageone .header {
+    margin-bottom: 35px;
+  }
+  .navbar .nav > li > a {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar .nav > li > a {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
 body {
 	background-color:#FFF;
   font-family: 'ProximaNova-Regular';
@@ -54,7 +71,6 @@ div#first-page-details {
   height:30px;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-right: 15px;
 }
 
 .nav-tabs > li > a {
@@ -71,6 +87,13 @@ div#first-page-details {
   margin: 0px;
   padding: 0px;
   min-height: 30px;
+}
+
+.navbar .brand {
+  padding: 5px 25px 5px 25px;
+  background-color: #64AAB2;
+  color: #333;
+  text-shadow: none;
 }
 
 /*  SIDE NAV  */
